@@ -1,10 +1,10 @@
-* Sate Kambing
-** Git Pertama saya untuk project - bismillah
+# Sate Kambing
+## Git Pertama saya untuk project - bismillah
 
 Ini framework yang ane kembangin untuk memudahkan membuat web
 > Cuma iseng
 
-** Catatan tentang git aja **
+## Catatan tentang git aja ##
 git add = untuk menambahkan file (track)
 git commit -m "Isi pesan" = untuk men save perubahan di git
 
