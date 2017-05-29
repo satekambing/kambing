@@ -1,0 +1,16 @@
+s an Fixed ATAPI device
+	CHS: 0x3FFF(0x3FFF), 0x10(0x10), 0x3F(0x3F)
+	Total Sectors: 0x00FBFC10(0x0FFFFFFF)
+	Model number :  SAMSUNG HM250HI
+	Firmware rev :  2AC101C
+	Serial number:  S1YKJC0SC08013
+
+  GetDriveLayOut ...
+  OK
+  ====== Drive LayOutEx Information ===================================================
+  PartitionStyle MBR
+  PartEntry#   StartingOffSet   PartitionLength  HidSect  PartNumber  PT  BI  Recgnz
+  ----------   --------------   ---------------  -------  ----------  --  --  ------
+          0        15E2700000          15E00000  AF13800           1  07  01       1
+          1        15F851A000        24242E6000  AFC28D0           2  07  00       1
+    

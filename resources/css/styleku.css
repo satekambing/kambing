@@ -1,0 +1,23 @@
+/*@import url('blueprint.css');*/
+/*@import url('blog.css');*/
+@import url('https://fonts.googleapis.com/css?family=Lato');
+body {
+  font-family : 'Lato';
+}
+ /**
+   HEADER
+ **/
+.xnavbar {
+  background-color: var(--birumuda);
+  height: 2.5rem;
+}
+ /**/
+
+ /* MAIN */
+
+ .image-header {
+   /*visibility: hidden;*/
+ }
+ /*.post > .isi > img {
+   width: 20%;
+ }*/

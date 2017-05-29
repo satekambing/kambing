@@ -1,0 +1,17 @@
+:root {
+  --biru : #3498db;
+  --birumuda: #e3f2fd;
+  --birutua: #2980b9;
+  --putih: #fff;
+
+  --textgelap: #000;
+  --textnormal: #483726;
+  --warnaborder : #dbdcdd 1px solid;
+  --padding-aside: 3%;
+  --radius: 2px;
+  /*horizontal vertikal blue spread warna*/
+  --box-shadow: 0px 2px 2px 0px #ddd;
+}
+.bersih{
+  clear: both;
+}
