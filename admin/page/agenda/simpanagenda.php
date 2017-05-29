@@ -1,5 +1,5 @@
 <?php
-if (empty($_POST['tanggal_agenda']) OR empty($_POST['judul']) OR empty($_POST['isi'])){
+if ((!isset($_POST['hapus'])) && (empty($_POST['tanggal_agenda']) OR empty($_POST['judul']) OR empty($_POST['isi']) )){
   echo die("Data tidak lengkap");
 }
 require_once("../../../config/fungsi_admindata.php");
@@ -10,7 +10,7 @@ extract($_POST);
 $namatable = 'tbl_agenda';
 $pk       =  'id_agenda';
 
-$tanggal_agenda = UbahTanggal($tanggal_agenda);
+$tanggal_agenda = UbahTanggal($tanggal_agenda??'');
 if(isset($tambah)){
   // Jika proses tambah data
   $sql   = "INSERT INTO $namatable (tanggal_agenda, judul, isi) ";
@@ -28,8 +28,10 @@ elseif (isset($ubah)){
   $page = 2;
 }
 elseif (isset($hapus)){
-  $sql   = "UPDATE $namatable SET tanggal_agenda=?,judul=?,isi=? WHERE $pk=?";
-
+  $sql   = "DELETE FROM $namatable WHERE $pk=?";
+  $query = $koneksi->prepare($sql);
+  $query->bind_param('i', $hapus);
+  $page = 3;
 }
 // i = integer, s = string... bind_param('tipe data kolom..', 'isi kolom 1','isi kolom 2')
 // s 8 kali karna semua kolom berjumlah 8 dan semuanya bertipe string

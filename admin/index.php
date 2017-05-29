@@ -32,6 +32,7 @@ require_once("../config/koneksi.php");
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <link rel="stylesheet" href="jquery.dataTables.min.css">
 
+  <link rel="stylesheet" href="../resources/css/styleku.css">
 <style>
     /*.main-sidebar {
       background: #efefef !important;
@@ -231,6 +232,7 @@ desired effect
 </html>
 <script>
 // $(window).load(function() { $("#loading").fadeOut("slow"); })
+$(".box").hide(1);
 $(document).ready(function(){
     var x = window.location.search.substr(3);
     $("." + x).addClass("active");
@@ -239,6 +241,7 @@ $(document).ready(function(){
     $(document).ready(function() {
       $('#contoh').DataTable();
     });
+    $(".box").fadeIn(300);
 })
 
 </script>

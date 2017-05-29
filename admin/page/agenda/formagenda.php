@@ -66,7 +66,7 @@ $ket       = "tambah";
 </div>
 
 <div class='modal-footer'>
-  <button type='button' class='btn btn-faded pull-left' data-dismiss='modal'>Batal</button>
+  <button type='button' class='btn btn-faded pull-left' data-dismiss='modal'>Kembali</button>
   <button type='button' class='btn btn-simpan btn-primary' id="btn-simpan">Simpan</button>
   <button type='button' class='btn btn-info'>Reset</button>
 </div>
