@@ -155,17 +155,17 @@ function buttonHapus(halaman,rowid){
   $(".btn-hapus").click(function(){
     $.ajax({
       type  : 'post',
-      url   : 'page/' + halaman +'/simpanx' + halaman +'.php',
+      url   : 'page/' + halaman +'/simpan' + halaman +'.php',
       data  : {hapus: rowid,jhal: halaman},
       success : function(data){
         // alert(data);
-        if(data == 1){
+        if(data == 3){
           $(".pesan-form").removeClass("alert alert-success alert-danger").addClass("alert alert-success");
           $(".pesan-form").html("<h4> Berhasil Menghapus Data</h4>") ;
           // $(".modal-header, .form-horizontal, .modal-footer").fadeOut(1000);
           $(".btn-hapus, .modal-header").fadeOut(500);
-          setTimeout(function() { $('.modal').modal('hide'); }, 2000);
-
+          setTimeout(function() { $('.modal').modal('hide');location.reload(); }, 2000);
+          // location.reload();
         }else{
           $(".pesan-form").removeClass("alert alert-success alert-danger").addClass("alert alert-danger").fadeIn(100);
           $(".pesan-form").html("<h4> Gagal </h4><p>" + data + "</p>");
