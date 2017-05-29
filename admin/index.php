@@ -13,15 +13,6 @@ require_once("../config/koneksi.php");
 
   <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="../resources/css/font-awesome.min.css">
-  <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
-
-
-<!--
-  <link rel="stylesheet" href="plugins/datatables/jquery.dataTables.min.css">
-  <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css"> -->
-
-  <!-- <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"> -->
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"> -->
 
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="dist/css/skins/skin-modifku.min.css">
@@ -33,34 +24,8 @@ require_once("../config/koneksi.php");
   <link rel="stylesheet" href="jquery.dataTables.min.css">
 
   <link rel="stylesheet" href="../resources/css/styleku.css">
-<style>
-    /*.main-sidebar {
-      background: #efefef !important;
-      border-right: 2px #3c8dbc solid;
-    }*/
-
-</style>
 </head>
-<!--
-BODY TAG OPTIONS:
-=================
-Apply one or more of the following classes to get the
-desired effect
-|---------------------------------------------------------|
-| SKINS         | skin-blue                               |
-|               | skin-black                              |
-|               | skin-purple                             |
-|               | skin-blue                             |
-|               | skin-red                                |
-|               | skin-green                              |
-|---------------------------------------------------------|
-|LAYOUT OPTIONS | fixed                                   |
-|               | layout-boxed                            |
-|               | layout-top-nav                          |
-|               | sidebar-collapse                        |
-|               | sidebar-mini                            |
-|---------------------------------------------------------|
--->
+
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
@@ -110,42 +75,16 @@ desired effect
               <li class="footer"><a href="#">See All Messages</a></li>
             </ul>
           </li>
-          <!-- Notifications: style can be found in dropdown.less -->
-          <!-- Tasks: style can be found in dropdown.less -->
-          <!-- User Account: style can be found in dropdown.less -->
         </ul>
       </div>
     </nav>
   </header>
-  <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-      <!-- Sidebar user panel -->
-      <!-- search form -->
-
-      <!-- /.search form -->
-      <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">Menu</li>
         <li><a href="#"><i class="fa fa-dashboard text-red"></i> <span>Dashboard</span></a></li>
-        <!-- <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Kepegawaian</span></a></li> -->
-        <!-- <li class="treeview">
-          <a href="#">
-            <i class="fa fa-files-o text-purple"></i>
-            <span>Profil</span>
-            <span class="pull-right-container">
-              <span class="label label-primary pull-right"></span>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-            <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-            <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-            <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
-          </ul>
-        </li> -->
-        <!-- <li><a href="?p=user"><i class="fa fa-circle-o text-green"></i> <span>Data User</span></a></li> -->
+
         <li class="header">Halaman Depan</li>
         <li class="berita"><a href="?p=berita"><i class="fa fa-newspaper-o text-faded"></i> <span>Berita</span></a></li>
         <li class="profil"><a href="?p=profil"><i class="fa fa-address-book text-faded"></i> <span>Profil</span></a></li>
@@ -177,19 +116,6 @@ desired effect
     </div>
   </div>
 
-  <!-- <footer class="main-footer"> -->
-    <!-- To the right -->
-    <!-- <div class="pull-right hidden-xs"> -->
-      <!-- Anything you want -->
-    <!-- </div> -->
-    <!-- Default to the left -->
-    <!-- <strong>Theme By Bootstrap - Admin LTE2x.</strong> -->
-  <!-- </footer> -->
-
-  <!-- Control Sidebar -->
-  <!-- /.control-sidebar -->
-  <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
 </div>
 <!-- ./wrapper -->
 
@@ -211,23 +137,6 @@ desired effect
 
 </script>
 
-<!-- <script src="plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="plugins/datatables/dataTables.bootstrap.min.js"></script> -->
-<!-- <script>
-  $(document).ready(function(){
-    // menu seected
-    var url = window.location;
-    $('ul.nav a[href="'+ url +'"]').parent().addClass('active');
-
-    $('ul.nav a').filter(function() {
-         return this.href == url;
-    }).parent().addClass('active');
-    //
-
-
-    //
-  });
-</script> -->
  </body>
 </html>
 <script>
