@@ -53,11 +53,11 @@
   $("form").submit(function(){
     $.ajax({
       type :'POST',
-      url  : 'login.cek',
+      url  : 'logincek.php',
       data : $(this).serialize(),
       success: function(data){
         alert(data)
-      },
+      }
     })
   })
 </script>
