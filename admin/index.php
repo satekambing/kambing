@@ -21,7 +21,7 @@ require_once("../config/koneksi.php");
   <link rel="stylesheet" href="plugins/datepicker/datepicker3.css">
   <link rel="stylesheet" href="plugins/select2-master/dist/css/select2modiv.min.css">
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
-  <link rel="stylesheet" href="jquery.dataTables.min.css">
+  <link rel="stylesheet" href="plugins/datatable/jquery.dataTables.min.css">
 
   <link rel="stylesheet" href="../resources/css/styleku.css">
 </head>
@@ -57,7 +57,7 @@ require_once("../config/koneksi.php");
 <script src="plugins/daterangepicker/daterangepicker.js"></script>
 
 <script src="../resources/js/fungsi_admin.js"></script>
-<script src="jquery.dataTables.min.js">
+<script src="plugins/datatable/jquery.dataTables.min.js">
 
 </script>
 
