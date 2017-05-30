@@ -1,8 +1,6 @@
-
 <?php
 require_once("../config/config.php");
 require_once("../config/koneksi.php");
-require_once("../config/aman.php");
 
 error_reporting(E_ALL);
 if(isset($_POST['username']) && isset($_POST['pass'])){
@@ -15,12 +13,13 @@ if(isset($_POST['username']) && isset($_POST['pass'])){
     $login = $koneksi->prepare("SELECT email FROM tbl_user WHERE username=?");
     $login->bind_param("s",$user);
     $login->execute();
+
     $login->store_result();
-
-
     $login->bind_result($email);
-    $login->fetch();
+
     if($login->num_rows > 0){
+      // set session dulu
+      
       echo 1;
     }else{
       echo "username / password salah";
