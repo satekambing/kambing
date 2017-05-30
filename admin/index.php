@@ -1,4 +1,9 @@
 <?php
+session_start();
+
+require_once("../config/fungsi_keamanan.php");
+cekLogin();
+
 require_once("../config/fungsi_adminview.php");
 require_once("../config/config.php");
 require_once("../config/koneksi.php");
