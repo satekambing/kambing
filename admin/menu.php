@@ -25,7 +25,7 @@
     <?php } ?>
     <li class="header">Pengaturan</li>
     <li><a href="?p=user"><i class="fa fa-user text-faded"></i><span>User</span></a></li>
-    <li><a href="?p=keluar"><i class="fa fa-sign-out text-faded"></i><span>Keluar</span></a></li>
+    <li><a href="logout.php"><i class="fa fa-sign-out text-faded"></i><span>Keluar</span></a></li>
 
   </ul>
 </section>
