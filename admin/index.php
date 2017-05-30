@@ -64,7 +64,7 @@ require_once("../config/koneksi.php");
  </body>
 </html>
 <script>
-// $(window).load(function() { $("#loading").fadeOut("slow"); })
+
 $(".box").hide(1);
 $(document).ready(function(){
     var x = window.location.search.substr(3);
@@ -75,6 +75,5 @@ $(document).ready(function(){
       $('#contoh').DataTable();
     });
     $(".box").fadeIn(300);
-})
-
+});
 </script>
