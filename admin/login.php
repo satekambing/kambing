@@ -24,7 +24,7 @@
       <!-- Isi pesan  -->
     </p>
 
-    <form action="logincek.php" method="post">
+    <form action="" method="post">
       <div class="form-group has-feedback">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
         <input type="email" class="form-control" autofocus="" placeholder="Email / Nip">
@@ -49,3 +49,15 @@
 <script src="bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
+<script>
+  $("form").submit(function(){
+    $.ajax({
+      type :'POST',
+      url  : 'login.cek',
+      data : $(this).serialize(),
+      success: function(data){
+        alert(data)
+      },
+    })
+  })
+</script>
