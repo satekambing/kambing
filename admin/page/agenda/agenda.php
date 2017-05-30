@@ -1,4 +1,5 @@
 <?php
+cekLevel([1,2]);
 echo JudulHalaman(['Data Agenda Pegawai','Menampilkan Daftar Agenda Kegiatan ']);
 $JudulKolom = array('Tanggal','Nama Kegiatan','Keterangan','Status','Pilihan');
 
