@@ -27,11 +27,11 @@
     <form action="" method="post">
       <div class="form-group has-feedback">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
-        <input type="email" class="form-control" autofocus="" placeholder="Email / Nip">
+        <input type="email" name="username" class="form-control" required="" autofocus="" placeholder="Email / Nip">
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        <input type="password" name="pass" class="form-control" required=""  placeholder="Password">
       </div>
     </form>
       <div class="row">
@@ -65,8 +65,8 @@
           }, 1000);
         }else{
           $(".pesan").addClass("alert alert-danger");
-          $(".pesan").html("Login Gagal");
-          // return false;
+          $(".pesan").html(data);
+
         }
       }
     })
