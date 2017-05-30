@@ -29,7 +29,7 @@ function cekLevel($halaman){
   $level     = $ceklevel[1]; // mengambil konstanta berdasarkan user yg login saat itu juga
 
   if(!in_array($halaman, $level)){
-    
+    echo die(PesanPeringatan(array('jenis'=>'warning','judul'=>'Akses Dilarang','isipesan'=>'User tidak berhak mengakses halaman ini')));
   }
 }
 ?>
