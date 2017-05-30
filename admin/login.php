@@ -20,9 +20,9 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg pesan">
+    <div class="pesan">
       <!-- Isi pesan  -->
-    </p>
+    </div>
 
     <form action="" method="post">
       <div class="form-group has-feedback">
@@ -33,15 +33,15 @@
         <input type="password" class="form-control" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
+    </form>
       <div class="row">
         <div class="col-xs-8">
           <a href="#">Lupa Password ?</a>
         </div>
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Masuk</button>
+          <button class="btn btn-primary btn-block btn-flat btn-login">Masuk</button>
         </div>
       </div>
-    </form>
   </div>
 </div>
 
@@ -50,13 +50,24 @@
 </body>
 </html>
 <script>
-  $("form").submit(function(){
+  $(".btn-login").click(function(){
     $.ajax({
       type :'POST',
       url  : 'logincek.php',
-      data : $(this).serialize(),
+      data : $("form").serialize(),
       success: function(data){
-        alert(data)
+        if(data == 1 ){
+          // kalau login berhasil
+          $(".pesan").addClass("alert alert-success");
+          $(".pesan").html("Selamat - Login Berhasil");
+          setTimeout(function() {
+            location.replace("index.php");
+          }, 1000);
+        }else{
+          $(".pesan").addClass("alert alert-danger");
+          $(".pesan").html("Login Gagal");
+          // return false;
+        }
       }
     })
   })
