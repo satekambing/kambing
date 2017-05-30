@@ -12,13 +12,14 @@ if(isset($_GET['username']) && isset($_GET['pass'])){
   if($user == "" OR $pass == ""){
     echo (die("Data Tidak Lengkap"));
   }else{
-    $user = 3;
-    $login = $koneksi->prepare("SELECT * FROM tbl_user WHERE id_user=?");
+    $user = 4;
+    $login = $koneksi->prepare("SELECT username FROM tbl_user WHERE id_user=?");
     $login->bind_param("i",$user);
     $login->execute();
 
+    $login->bind_result($username);
     $login->fetch();
-    echo "sate".$login->num_rows;
+    echo $username;
   }
 }else{
   echo "Gagal";
