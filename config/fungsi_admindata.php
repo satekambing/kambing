@@ -66,4 +66,23 @@ function uploadfoto(array $file, $folder){
   move_uploaded_file($tmp,$nama_file);
 
 }
+function cekDuplikasiData($namatable,$kolom,$isidata){
+  $koneksi	= new mysqli(SERVER, USER, PASS, DBNAME);
+  $sql = "SELECT $kolom FROM $namatable WHERE $kolom=";
+  if(is_int($isidata)){
+    $sql .= $isidata;
+  }else{
+    $sql .= "'".$isidata."'";
+  }
+  $cek = $koneksi->query($sql);
+  // return 'zzz';
+  if($cek->num_rows > 0){
+    return $cek->num_rows;
+  }
+}
+function cekEmail($email){
+  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    return "salah";
+  }
+}
 ?>
