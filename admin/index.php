@@ -77,7 +77,9 @@ $(document).ready(function(){
     // return false;
 
     $(document).ready(function() {
-      $('#contoh').DataTable();
+      $('#contoh').DataTable({
+        "ordering": false
+      });
     });
     $(".box").fadeIn(300);
 });
