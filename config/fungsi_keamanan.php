@@ -24,7 +24,8 @@ function cekLogin(){
   }
 }
 function cekLevel($halaman){
-  // echo SERVER;
+  cekLogin();
+  
   $ceklevel  = levelUser($_SESSION['level']);
   $level     = $ceklevel[1]; // mengambil konstanta berdasarkan user yg login saat itu juga
 
