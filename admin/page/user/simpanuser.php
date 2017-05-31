@@ -1,5 +1,5 @@
 <?php
-if ((!isset($_POST['hapus'])) && (empty($_POST['username']) OR empty($_POST['namalengkap']) OR empty($_POST['email']) OR empty($_POST['pass']) )){
+if ((!isset($_POST['hapus'])) && (empty($_POST['username']) OR empty($_POST['namalengkap']) OR empty($_POST['email']) )){
   echo die("Data tidak lengkap");
 }
 
