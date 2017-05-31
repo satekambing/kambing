@@ -14,8 +14,8 @@ extract($_POST);
 $namatable = 'tbl_agenda';
 $pk        =  'id_agenda';
 
-$tanggal_agenda = UbahTanggal($tanggal_agenda??'');
 if(isset($tambah)){
+  $tanggal_agenda = UbahTanggal($tanggal_agenda??'');
   // Jika proses tambah data
   $sql   = "INSERT INTO $namatable (tanggal_agenda, judul, isi) ";
   $sql  .= " VALUES(?, ?, ?)";
@@ -24,6 +24,7 @@ if(isset($tambah)){
   $page = 1;
 }
 elseif (isset($ubah)){
+  $tanggal_agenda = UbahTanggal($tanggal_agenda??'');
   // Jika proses edit data
   $sql   = "UPDATE $namatable SET tanggal_agenda=?,judul=?,isi=? WHERE $pk=?";
   $query = $koneksi->prepare($sql);
