@@ -61,7 +61,7 @@ function AwalModalDialog($id,$warna='faded'){
 
         </div>
       </div>
-            <?php
+  <?php
   }
 function UbahStatus($status){
   return ($status == 1 ? 'Aktif':'Tidak Aktif');
@@ -87,6 +87,22 @@ function UbahTanggalKeBulan($tanggal){
   $tanggal = $tanggal[2].' '.$bulan.' '.$tanggal[0];
 
   return $tanggal;
+}
+function PencarianLanjutan(array $data){
+  ?>
+  <!-- <form class="" action="index.html" method="post">
+    <div class="input-group">
+      <div class="isi_pencarian">
+        <input type="text" class="form-control" name="" value="" placeholder="Pencarian">
+        <input type="text" class="form-control" name="" value="" placeholder="Pencarian">
+
+      </div>
+      <span class="input-group-btn">
+          <button type="button" class="btn btn-primary btn-flat">Send</button>
+        </span>
+    </div>
+  </form> -->
+  <?php
 }
 
 
