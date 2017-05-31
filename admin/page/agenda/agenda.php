@@ -15,10 +15,10 @@ $agenda = $koneksi->query($sql);
       <a href="#TambahModal" data-toggle="modal" data-halaman="agenda">
         <button class="btn btn-l btn-primary"><span><i class="fa fa-plus"></i></span> Tambah Agenda</button>
       </a>
-      <div class="box-tools">
-        <div class="" id="aku">
-        </div>
+      <div class="pull-right col-xs-6">
+        <?php PencarianLanjutan(['tanggal']) ?>
       </div>
+
     </div>
     <div class="box-body">
       <!-- table-condensed -->
