@@ -25,7 +25,7 @@
       <li class="pensiun"><a href="?p=pensiun"><i class="fa fa-circle-o text-faded"></i> <span>Pensiun</span></a></li>
     <?php } ?>
     <li class="header">Pengaturan</li>
-    <li><a href="?p=user"><i class="fa fa-user text-faded"></i><span>User</span></a></li>
+    <li class="user"><a href="?p=user"><i class="fa fa-user text-faded"></i><span>User</span></a></li>
     <li><a href="logout.php"><i class="fa fa-sign-out text-faded"></i><span>Keluar</span></a></li>
 
   </ul>
