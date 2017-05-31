@@ -2,6 +2,7 @@
 if ((!isset($_POST['hapus'])) && (empty($_POST['tanggal_agenda']) OR empty($_POST['judul']) OR empty($_POST['isi']) )){
   echo die("Data tidak lengkap");
 }
+session_start();
 require_once("../../../config/fungsi_admindata.php");
 require_once("../../../config/config.php");
 require_once("../../../config/koneksi.php");
