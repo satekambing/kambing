@@ -1,9 +1,14 @@
 <?php
+session_start();
+require_once("../../../config/config.php");
+require_once("../../../config/koneksi.php");
 require_once("../../../config/fungsi_adminview.php");
+require_once("../../../config/fungsi_keamanan.php");
+
+cekLevel('agenda'); // cek status user.. sudah login / belum.. di izinkan mengakses / tidak
+
 $rowid      = $_POST['jrow'] ?? ''; // mengecek apakah user ngklik tombol edit
-
 $judulModal = ($rowid == '' ? 'Tambah':'Ubah'); // kalau rowid kosong maka tampilkan kata Tambah pada dialog box jika tidak tampilkan Ubah data
-
 $namaHalaman = "Agenda"; // set halaman default
 
 // Konfigurasi Database
@@ -13,9 +18,9 @@ $ket       = "tambah";
 
 ?>
 <div class='modal-header'>
-  <!-- <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+  <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
     <span aria-hidden='true'>×</span>
-  </button> -->
+  </button>
   <h4 class='modal-title'><?php echo $judulModal.' '.$namaHalaman ?></h4>
 </div>
 
@@ -25,8 +30,6 @@ $ket       = "tambah";
     if (!$rowid == ""){
 
       // cari data di database dulu
-      require_once("../../../config/config.php");
-      require_once("../../../config/koneksi.php");
       $sql = "SELECT * FROM $namatable WHERE $pk=$rowid";
       if($agenda=$koneksi->query($sql)){
         if($agenda->num_rows > 0){
@@ -42,6 +45,7 @@ $ket       = "tambah";
 
     ?>
     <div class="pesan-form" >
+      <!-- Pesan Kesalahan ada disini -->
     </div>
     <form class="form" role="form" method="post" name="agenda" id="formagenda">
       <input type="hidden" name="<?php echo $ket ?>" value="<?php echo $data->id_agenda ?>" >
