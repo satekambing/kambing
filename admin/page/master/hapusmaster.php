@@ -14,8 +14,8 @@ $pk         =  'id_master'; // primarykey table
 
 //$sql   = "  SELECT c.*, p. FROM tbl_ c LEFT JOIN tbl_ p ON c.id_pegawai = p.id_pegawai";
 // $sql   .= " WHERE $pk=$rowid";
-
-$query    = $koneksi->query("SELECT * FROM $namatable WHERE $pk=$id");
+$sql      = "SELECT * FROM $namatable WHERE $pk=$id";
+$query    = $koneksi->query($sql);
 $data     = $query->fetch_object();
 
 ?>
@@ -33,7 +33,7 @@ $data     = $query->fetch_object();
     <div class="form-group">
       <label class="col-sm-3 control-label" for="">Nama master</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" disabled value="<?php echo $data->judul ?>">
+        <input type="text" class="form-control" disabled value="<?php echo $data->nip ?>">
       </div>
     </div>
 
