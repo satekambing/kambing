@@ -2,7 +2,7 @@
 // perlu koneksi broh
 
 function CariPegawai($nip){
-  require_once("../../../config/koneksi.php");
+  $koneksi	= new mysqli(SERVER, USER, PASS, DBNAME);
   $sql = "SELECT id_pegawai,nip FROM tbl_pegawai WHERE nip='$nip' ";
   $cari = $koneksi->query($sql);
   // echo $cari->num_rows.' '.$nip;
