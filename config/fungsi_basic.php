@@ -43,7 +43,12 @@ function KolomWaktu($waktu = null){
 // untuk data user - level
 function UbahLevel(integer $level){
 //  1, Super Admin, 2 = Kepala BKP, 3 Kasubag, 4 Pegawai
-
+}
+function selisihTanggal($tanggal_mulai, $tanggal_selesai){
+  $mulai = new DateTime($tanggal_mulai);
+  $akhir = new DateTime($tanggal_selesai);
+  $interval = $mulai->diff($akhir);
+  return $interval->days;
 }
 
 ?>
