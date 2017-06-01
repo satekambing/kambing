@@ -21,9 +21,10 @@ if(isset($tambah)){
 
   // $cekUser = cekDuplikasiData($namatable,'username',$username);
   // if ($cekUser > 0) {echo die("Data Username <b>".$username.'</b> Sudah ada');}
-
-
-  $tanggal_master = UbahTanggal($tanggal_master??'');
+  // $nip    = CariPegawai($nip); // mencari id_pegawai berdasarkan nip
+  // $tanggal= UbahDateRange($tanggal_mulaiakhir);
+  // $tanggal_master = UbahTanggal($tanggal_master??''); // konversi date range ke date biasa
+  //
   $sql   = "INSERT INTO $namatable (tanggal_master,,) ";
   $sql  .= " VALUES(?, ?)";
   $query = $koneksi->prepare($sql);
