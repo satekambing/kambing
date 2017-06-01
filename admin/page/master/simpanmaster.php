@@ -16,6 +16,9 @@ $pk        =  'id_master';
 
 if(isset($tambah)){
   // Jika proses tambah data
+  $cekEmail = cekEmail($email);
+  if ($cekEmail == "salah") {echo die("Format Email Salah");}
+  
   $tanggal_master = UbahTanggal($tanggal_master??'');
   $sql   = "INSERT INTO $namatable (tanggal_master,,) ";
   $sql  .= " VALUES(?, ?)";
