@@ -1,28 +1,30 @@
 <?php
-echo JudulHalaman(['Data Pensiun Pegawai','Menampilkan Daftar Pensiun Pegawai ']);
-$JudulKolom = array('NIP','Nama Pegawai','Tanggal Mulai Pensiun','Keterangan');
+cekLevel('pensiun');
+echo JudulHalaman(['Pensiun','Menampilkan data pensiun pegawai']); // Judul Halaman - Deskripsi
+$JudulKolom = array('NIP','Nama','Tanggal Pensiun','Keterangan','Pilihan'); // semua kolom di tbl
 
 // query kan table
-$sql   = " SELECT * FROM tbl_pegawai p INNER JOIN tbl_pensiun pn ON p.id_pegawai = pn.id_pegawai ";
+
+$sql   = "  SELECT c.*, p.id_pegawai, p.nip, p.nama FROM tbl_pensiun c LEFT JOIN tbl_pegawai p ON c.id_pegawai = p.id_pegawai";
+// $sql   = " SELECT * FROM tbl_pensiun";
 $pensiun = $koneksi->query($sql);
-// die(var_dump($pegawai));
+
 ?>
 <div class="content-header">
   <div class="box box-primary">
     <div class="box-header with-border">
       <!-- Tombol Tambah Data -->
-      <a href="#TambahDialog" data-toggle="modal" data-halaman="Pensiun">
-        <button class="btn btn-l btn-primary"><span><i class="fa fa-plus"></i></span> Tambah Pensiun Pegawai</button>
+      <a href="#TambahModal" data-toggle="modal" data-halaman="pensiun">
+        <button class="btn btn-l btn-primary"><span><i class="fa fa-plus"></i></span> Tambah pensiun</button>
       </a>
-      <div class="box-tools">
-        <div class="" id="aku">
-
-        </div>
+      <div class="pull-right col-xs-6">
+        <?php PencarianLanjutan(['tanggal']) ?>
       </div>
+
     </div>
     <div class="box-body">
       <!-- table-condensed -->
-      <table class="table table-striped ">
+      <table class="table table-striped " id="contoh">
         <thead>
           <tr>
             <?php KolomTable($JudulKolom) ?>
@@ -33,24 +35,23 @@ $pensiun = $koneksi->query($sql);
             <tr >
               <td><?php echo $r->nip ?></td>
               <td><?php echo $r->nama ?></td>
-              <td><?php echo $r->tanggal_pensiun ?></td>
+              <td><?php echo UbahTanggalKeBulan($r->tanggal_pensiun) ?></td>
               <td><?php echo $r->keterangan ?></td>
-              <td><a href="#UbahDialog" class="TombolEdit" data-toggle="modal" data-primarykey="id_pegawai" data-halaman="pensiun" data-idnya=<?php  echo $r->id_pegawai ?> >
-                  <button class="btn btn-sm btn-success" ><i class="fa fa-edit"></i></button></a>
-                  <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+              <td><a href="#TambahModal" class="TombolEdit" data-toggle="modal" data-primarykey="id_pensiun" data-halaman="pensiun" data-idnya="<?php  echo $r->id_pensiun ?>" >
+                   <button class="btn btn-sm btn-success" ><i class="fa fa-edit"></i></button></a>
+                  <a href="#HapusModal" class="TombolHapus" data-toggle="modal" data-halaman="pensiun" data-idnya="<?php  echo $r->id_pensiun ?>">
+                   <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></a>
               </td>
             </tr>
           <?php } ?>
         </tbody>
       </table>
-    </div>
-    <div class="box-header">
 
     </div>
   </div>
 </div>
-<!-- KUMPULAN MODAL DIALOGNYA -->
-<?php //AwalModalDialog('Ubah Data Pegawai','UbahDialog') ?>
-<?php AwalModalDialog('Tambah Pensiun','TambahDialog') ?>
+<?php AwalModalDialog('TambahModal') ?>
+<?php AwalModalDialog('HapusModal') ?>
+
 
 <!-- Akhir -->
