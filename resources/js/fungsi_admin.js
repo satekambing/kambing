@@ -38,7 +38,7 @@ function pencarianauto(){
     placeholder : 'Pencarian ' + judul ,
     tags: "true",
     ajax: {
-       url: 'page/cuti/searchpegawai.php',
+       url: 'page/searchpegawai.php',
        dataType: 'json',
        type: 'GET',
        delay: 250,
