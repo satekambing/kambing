@@ -4,7 +4,7 @@ echo JudulHalaman(['Cuti','Menampilkan data Cuti Pegawai']); // Judul Halaman - 
 $JudulKolom = array('NIP','Nama','Jenis','No Surat','Tgl Surat','Tgl Mulai - Selesai','Keterangan','Pilihan'); // semua kolom di tbl
 
 // query kan table - left -> semua yg tampil di kiri akan di tampilkan
-$sql   = " SELECT * FROM tbl_cuti c LEFT JOIN tbl_pegawai p ON c.id_pegawai = p.id_pegawai";
+$sql   = " SELECT c.*,p.nip,p.nama FROM tbl_cuti c LEFT JOIN tbl_pegawai p ON c.id_pegawai = p.id_pegawai";
 $cuti = $koneksi->query($sql);
 
 ?>
