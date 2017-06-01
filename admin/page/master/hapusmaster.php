@@ -12,6 +12,9 @@ cekLevel('master'); // cek status user.. sudah login / belum.. di izinkan mengak
 $namatable  = 'tbl_master';
 $pk         =  'id_master'; // primarykey table
 
+//$sql   = "  SELECT c.*, p. FROM tbl_ c LEFT JOIN tbl_ p ON c.id_pegawai = p.id_pegawai";
+// $sql   .= " WHERE $pk=$rowid";
+
 $query    = $koneksi->query("SELECT * FROM $namatable WHERE $pk=$id");
 $data     = $query->fetch_object();
 

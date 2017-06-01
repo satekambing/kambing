@@ -4,6 +4,9 @@ echo JudulHalaman(['','']); // Judul Halaman - Deskripsi
 $JudulKolom = array('','Pilihan'); // semua kolom di tbl
 
 // query kan table
+
+//$sql   = "  SELECT c.*, p. FROM tbl_ c LEFT JOIN tbl_ p ON c.id_pegawai = p.id_pegawai";
+
 $sql   = " SELECT * FROM tbl_";
 $master = $koneksi->query($sql);
 
