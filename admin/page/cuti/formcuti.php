@@ -72,7 +72,7 @@ $ket       = "tambah";
       <div class="form-group">
         <label for="">Tanggal Cuti</label>
         <div class="input-group date">
-          <input type="text" name="tanggal_mulaiakhir" placeholder="YYYY-DD-MM" class="tanggalpicker form-control" value="<?php echo UbahTanggalKeView($data->tanggal_mulai??'').' - '.UbahTanggalKeView($data->tanggal_selesai??'') ?>" >
+          <input type="text" name="tanggal_mulaiakhir" placeholder="YYYY-DD-MM" class="tanggalpicker form-control" value="<?php echo (isset($data->tanggal_mulai)?UbahTanggalKeView($data->tanggal_mulai).' - '.UbahTanggalKeView($data->tanggal_selesai):'') ?>" >
           <span class="input-group-addon text-blue"><i class="fa fa-calendar"></i></span>
         </div>
       </div>
