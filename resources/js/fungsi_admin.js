@@ -19,16 +19,16 @@ function input_tanggal(){
     }
   });
 
-  // $('.tanggalpicker').daterangepicker({
-  //     showDropdowns: true,
-  //     showWeekNumbers: true,
-  //     // startDate: "05/07/1993",
-  //     // endDate: "05/13/2017",
-  //     // minDate: "03/27/1993",
-  //     locale: {
-  //       format: 'DD / MM / YYYY',
-  //     },
-  //   });
+  $('.tanggalpicker').daterangepicker({
+      showDropdowns: true,
+      showWeekNumbers: true,
+      // startDate: "05/07/1993",
+      // endDate: "05/13/2017",
+      // minDate: "03/27/1993",
+      locale: {
+        format: 'DD / MM / YYYY',
+      },
+    });
 
     // $("form").reset();
 }
