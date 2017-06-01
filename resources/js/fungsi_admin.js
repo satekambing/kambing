@@ -75,7 +75,7 @@ function pencarianauto(){
 function buttonModal(halaman){
   $(".btn-simpan").click(function(){
     var form = "#form"+halaman;
-    var uploadfiles = $(form).attr("name");
+    var uploadfiles = $(form).attr("enctype");
 
     if (uploadfiles == "multipart/form-data"){
       enctypex = 'multipart/form-data';
@@ -96,6 +96,7 @@ function buttonModal(halaman){
     // alert(prosesx+contenx+idform);
     // alert($(this).attr("name"));
     // alert(prosex);
+
     $.ajax({
       type  : 'post',
       enctype: enctypex,
