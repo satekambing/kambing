@@ -57,7 +57,7 @@ $ket       = "tambah";
       </div>
       <div class="form-group">
         <label for="">Nama Lengkap</label>
-        <input type="text" name="namalengkap"  class="form-control" placeholder="Nama Lengkap" value="<?php echo ($data->namalengkap ?? '') ?>"  >
+        <input type="text" name="nama"  class="form-control" placeholder="Nama Lengkap" value="<?php echo ($data->nama ?? '') ?>"  >
       </div>
       <div class="form-group">
         <label for="">Jenis Kelamin</label>
@@ -76,7 +76,7 @@ $ket       = "tambah";
       </div>
       <div class="form-group">
         <label for="">Tempat Lahir</label>
-        <input type="text" name="tempat_lahir"  class="form-control" placeholder="Tempat Lahir" value="<?php echo ($data->judul ?? '') ?>"  >
+        <input type="text" name="tempat_lahir"  class="form-control" placeholder="Tempat Lahir" value="<?php echo ($data->tempat_lahir ?? '') ?>"  >
       </div>
       <div class="form-group">
         <label for="">Tanggal Lahir </label>
@@ -89,7 +89,7 @@ $ket       = "tambah";
       <div class="form-group">
         <label for="">Agama</label>
         <select class="form-control" name="agama">
-          <?php KolomAgama() ?>
+          <?php KolomAgama($data->agama ?? '') ?>
         </select>
       </div>
       <div class="form-group">
@@ -103,6 +103,12 @@ $ket       = "tambah";
       <div class="form-group">
         <label for="">Foto</label>
         <input type="file" name="gambar" class="form-control">
+        <?php if(isset($data->foto_profil) && (!$data->foto_profil == "")){ ?>
+          <div class="pull-right">
+            <p class="text-warning">* Kosongkan File Jika Tidak ingin mengganti</p>
+          </div>
+            <img class="img-thumbnail " src="../files/foto_pegawai/<?php echo $data->foto_profil ?>" width="150px" alt="">
+        <?php } ?>
       </div>
 
     </form>

@@ -1,6 +1,6 @@
 <?php
-if (empty($_POST['nip']) OR empty($_POST['namalengkap']) OR empty($_POST['tempat_lahir']) OR empty($_POST['email']) OR empty($_POST['tanggal_lahir'])){
-  echo die("Data tidak lengkap".$_POST['nip']);
+if ((!isset($_POST['hapus'])) && (empty($_POST['nip']) OR empty($_POST['nama']) OR empty($_POST['tempat_lahir']) OR empty($_POST['email']) OR empty($_POST['tanggal_lahir']))){
+  echo die("Data tidak lengkap");
 }
 require_once("../../../config/fungsi_admindata.php");
 require_once("../../../config/config.php");
@@ -16,18 +16,21 @@ $pk        =  'id_pegawai';
 
 if(isset($tambah)){
   // Jika proses tambah data
+  $cekUser = cekDuplikasiData($namatable,'nip',$nip);
+  if ($cekUser > 0) {echo die("Data NIP <b>".$nip.'</b> Sudah ada');}
+
+  $gambar = "";
   if(isset($_FILES['gambar']) && !$_FILES['gambar']['name'] == ""){
     // echo die('zzz1');
     // echo die('ada gambar');
-    $gambar = uploadfoto($_FILES['gambar']);
+    $gambar = uploadfoto($_FILES['gambar'],'foto_pegawai');
     // echo $gambar;
   }
-  echo die("ada".$_FILES['gambar']['name']);
   $tanggal_lahir = UbahTanggal($tanggal_lahir??'');
   $sql   = "INSERT INTO $namatable (nip, nama, jenis_kelamin, tempat_lahir, tanggal_lahir, agama, no_telp, email, foto_profil) ";
   $sql  .= " VALUES(?,?,?,?,?,?,?,?,?)";
   $query = $koneksi->prepare($sql);
-  $query->bind_param('sssssssss', $nip, $nama, $jenis_kelamin, $tempat_lahir, $tanggal_lahir, $agama, $no_telp, $email,$x);
+  $query->bind_param('sssssssss', $nip, $nama, $jenis_kelamin, $tempat_lahir, $tanggal_lahir, $agama, $no_telp, $email,$gambar);
   $page = 1;
 }
 elseif (isset($ubah)){
