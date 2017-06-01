@@ -12,8 +12,8 @@ $judulModal = ($rowid == '' ? 'Tambah':'Ubah'); // kalau rowid kosong maka tampi
 $namaHalaman = ""; // set halaman default
 
 // Konfigurasi Database
-$namatable = "";
-$pk        = ""; // primarykey di table
+$namatable = "tbl_";
+$pk        = "id_"; // primarykey di table
 $ket       = "tambah";
 
 ?>

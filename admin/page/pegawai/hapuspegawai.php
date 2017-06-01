@@ -7,10 +7,10 @@ require_once("../../../config/koneksi.php");
 require_once("../../../config/fungsi_adminview.php");
 require_once("../../../config/fungsi_keamanan.php");
 session_start();
-cekLevel('agenda'); // cek status user.. sudah login / belum.. di izinkan mengakses / tidak
+cekLevel('pegawai'); // cek status user.. sudah login / belum.. di izinkan mengakses / tidak
 
-$namatable  = 'tbl_agenda';
-$pk         =  'id_agenda';
+$namatable  = 'tbl_pegawai';
+$pk         =  'id_pegawai'; // primarykey table
 
 $query    = $koneksi->query("SELECT * FROM $namatable WHERE $pk=$id");
 $data     = $query->fetch_object();
@@ -26,19 +26,21 @@ $data     = $query->fetch_object();
     <!-- Pesan Kesalahan -->
   </div>
   <form class="form-horizontal" action="index.html" method="post">
+
     <div class="form-group">
-      <label class="col-sm-3 control-label" for="">Nama Agenda</label>
+      <label class="col-sm-3 control-label" for="">NIP</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" disabled value="<?php echo $data->judul ?>">
+        <input type="text" class="form-control" disabled value="<?php echo $data->nip ?>">
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-sm-3 control-label" for="">Tanggal</label>
+      <label class="col-sm-3 control-label" for="">Nama</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" disabled value="<?php echo UbahTanggalKeBulan($data->tanggal_agenda) ?>">
+        <input type="text" class="form-control" disabled value="<?php echo $data->nama ?>">
       </div>
     </div>
+
   </form>
 
 </div>

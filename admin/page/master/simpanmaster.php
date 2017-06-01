@@ -7,15 +7,16 @@ require_once("../../../config/config.php");
 require_once("../../../config/koneksi.php");
 require_once("../../../config/fungsi_adminview.php");
 require_once("../../../config/fungsi_keamanan.php");
+session_start();
 cekLevel('master'); // cek status user.. sudah login / belum.. di izinkan mengakses / tidak
 
 extract($_POST);
 $namatable = 'tbl_master';
 $pk        =  'id_master';
 
-$tanggal_master = UbahTanggal($tanggal_master??'');
 if(isset($tambah)){
   // Jika proses tambah data
+  $tanggal_master = UbahTanggal($tanggal_master??'');
   $sql   = "INSERT INTO $namatable (tanggal_master,,) ";
   $sql  .= " VALUES(?, ?)";
   $query = $koneksi->prepare($sql);
@@ -24,6 +25,7 @@ if(isset($tambah)){
 }
 elseif (isset($ubah)){
   // Jika proses edit data
+  $tanggal_master = UbahTanggal($tanggal_master??'');
   $sql   = "UPDATE $namatable SET tanggal_master=?,=?,=? WHERE $pk=?";
   $query = $koneksi->prepare($sql);
   $query->bind_param('sssi',$tanggal_master, $, $,$);

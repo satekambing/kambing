@@ -17,7 +17,7 @@
     <?php } ?>
     <?php if(cekMenu(MENU_KEPEGAWAIAN)){ ?>
       <li class="kepegawaian header">Kepegawaian</li>
-      <li class="biodata"><a href="?p=biodata"><i class="fa fa-user text-faded"></i> <span>Biodata</span><span class="pull-right-container"><small class="label pull-right bg-red">Belum Lengkap</small></span></a></li>
+      <li class="pegawai"><a href="?p=pegawai"><i class="fa fa-user text-faded"></i> <span>Pegawai</span><span class="pull-right-container"><small class="label pull-right bg-red">Belum Lengkap</small></span></a></li>
       <li class="kepangkatan"> <a href="?p=kepangkatan"><i class="fa fa-file text-faded"></i> <span>Kenaikan Pangkat</span></a></li>
       <li class="cuti"><a href="?p=cuti"><i class="fa fa-calendar text-faded"></i> <span>Cuti</span></a></li>
       <li class="gaji"><a href="?p=gaji"><i class="fa fa-home text-faded"></i> <span>Kenaikan Gaji</span></a></li>

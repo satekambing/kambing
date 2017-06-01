@@ -36,18 +36,21 @@ function UbahDateRange($tanggal){
 }
 
 // Upload Gambar
-function uploadfoto(array $file, $folder){
+function uploadfoto(array $file, $folder = ""){
   // Name , Type, tmp_name, error, size
   $nama   = $file['name'];
   $tmp    = $file['tmp_name'];
-  $size   = $_FILES['gambar']['size'];
-  $type   = $_FILES['gambar']['type'];
-  $error  = $_FILES['gambar']['error'];
+  $size   = $file['size'];
+  $type   = $file['type'];
+  $error  = $file['error'];
 
   $acak		= rand(1,99);
   $time   = time();
 	$nama_file_unik	= $acak.$time.$nama;
   $lokasi = ROOT.'/files/'.$folder.'/'.$nama_file_unik;
+  if($folder == ""){
+    $lokasi = ROOT.'/files/'.$nama_file_unik;
+  }
   // echo $lokasi;
   if($error == 0){
     if ($size <= 2000000) {

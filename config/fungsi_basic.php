@@ -1,9 +1,10 @@
 <?php
-function JudulHalaman(array $data){
-  $result = "<h1>".$data['judul']."</h1>";
-  return $result;
-}
+// function JudulHalaman(array $data){
+//   $result = "<h1>".$data['judul']."</h1>";
+//   return $result;
+// }
 function DropDown(array $data, $selected = null){
+  $withkey = 0;
   if ($data[0] == null){
     $withkey = 1; // kalo menggunakan key / misalnya untuk level di table user
   }
@@ -15,13 +16,13 @@ function DropDown(array $data, $selected = null){
     if ($withkey == 0){
       $key = $value ;
     }
-    echo "<option $s value='$key'>$value</option>";
+    echo "<option $seleksi value='$key'>$value</option>";
     # code...
   }
 }
 function KolomAgama($agama = null){
   echo "<option value=''>Pilih Kolom Agama</option>";
-  $data = array('Islam','Katolik','Protestan','Budha');
+  $data = array('Islam','Kristen','Katolik','Hindu','Budha','Khonghucu');
   DropDown($data, $agama);
 }
 function KolomUser($user = null){

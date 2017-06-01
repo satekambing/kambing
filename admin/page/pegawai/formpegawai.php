@@ -102,7 +102,7 @@ $ket       = "tambah";
       </div>
       <div class="form-group">
         <label for="">Foto</label>
-        <input type="file" name="foto">
+        <input type="file" name="gambar" class="form-control">
       </div>
 
     </form>
