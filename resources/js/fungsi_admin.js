@@ -198,8 +198,19 @@ $("#TambahModal").on("hidden.bs.modal", function(){
 
 });
 
-// Tombol Hapus
-// $(".TombolHapus").click(function (e){
-//   var x = $(this).attr("data-idnya");
-//   alert(x);
-// })
+// Menangani Text Editor - Profi Visi Misi dll //
+$(".btnEditor").click(function (e){
+  var jhal = $(this).attr('data-halaman');
+  var jkolom = $(this).attr('data-kolom');
+  var jform = $("#form"+jkolom);
+  // alert(jform.attr("method"));
+  $.ajax({
+    type :'POST',
+    url : 'page/'+jhal+'/simpan'+jhal+'.php',
+    data : jform.serialize(),
+    success : function(data){
+      alert(data)
+    },
+  })
+  return false;
+})
