@@ -4,6 +4,7 @@ require_once("../../../config/config.php");
 require_once("../../../config/koneksi.php");
 require_once("../../../config/fungsi_adminview.php");
 require_once("../../../config/fungsi_keamanan.php");
+require_once("../../../config/fungsi_basic.php");
 
 cekLevel('user'); // cek status user.. sudah login / belum.. di izinkan mengakses / tidak
 
@@ -63,8 +64,10 @@ $ket       = "tambah";
         <input type="email" name="email"  class="form-control" placeholder="exp: contoh@gmail.com" value="<?php echo ($data->email ?? '') ?>"  >
       </div>
       <div class="form-group">
-        <label for="">Level</label>
-        <input type="text" name="level"  class="form-control" placeholder="level" value="<?php //echo ($data->level ?? '') ?>"  >
+        <label for="">Level <?php echo $data->level?></label>
+        <select class="form-control" name="level">
+          <?php Dropdown(LEVEL_USER, $data->level??'') ?>
+        </select>
       </div>
       <div class="form-group <?php echo (isset($data->pass) ? 'has-warning':''); ?>">
         <label for="">Password</label>
