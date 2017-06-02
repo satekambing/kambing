@@ -104,6 +104,7 @@ $ket       = "tambah";
         <label for="">Foto</label>
         <input type="file" name="gambar" class="form-control">
         <?php if(isset($data->foto_profil) && (!$data->foto_profil == "")){ ?>
+          <input type="hidden" name="gambar2" value="<?php echo $data->foto_profil ?>">
           <div class="pull-right">
             <p class="text-warning">* Kosongkan File Jika Tidak ingin mengganti</p>
           </div>
