@@ -15,6 +15,8 @@ function CariPegawai($nip){
   }
 }
 function UbahTanggal($tanggal){
+  // untuk simpan ke database
+
   $tanggal = explode("/",$tanggal);
   $tanggal = str_replace(" ","",$tanggal);
   $tanggal = $tanggal[2].'-'.$tanggal[1].'-'.$tanggal[0];
@@ -34,7 +36,14 @@ function UbahDateRange($tanggal){
   $tanggal = ['mulai'=>$tanggalmulai, 'selesai'=> $tanggalakhir];
   return $tanggal;
 }
+function UbahTanggalWaktu($tanggal){
+  // untuk simpan ke database - tanpa detik.. cuma jam:menit
+  $tanggal  = explode("-",$tanggal);
+  $tanggalx = UbahTanggal($tanggal[0]);
+  $tanggaly = str_replace(" ","",$tanggal[1]);
 
+  return $tanggalx.' '.$tanggaly.':00';
+}
 // Upload Gambar
 function uploadfoto(array $file, $folder = ""){
   // Name , Type, tmp_name, error, size
@@ -68,6 +77,15 @@ function uploadfoto(array $file, $folder = ""){
   }
   move_uploaded_file($tmp,$nama_file);
 
+}
+function hapusGambar($nama_file, $folder=null){
+  if ($folder == null){
+    $folder = "";
+  }
+  $lokasi = ROOT.'/files/'.$folder.'/'.$nama_file;
+  if(file_exists($lokasi) && !$nama_file==""){
+    unlink($lokasi);
+  }
 }
 function cekDuplikasiData($namatable,$kolom,$isidata){
   $koneksi	= new mysqli(SERVER, USER, PASS, DBNAME);
