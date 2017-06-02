@@ -60,7 +60,7 @@ require_once("../config/koneksi.php");
 <script src="plugins/select2-master/dist/js/select2.min.js"></script>
 <script src="plugins/daterangepicker/moment.min.js"></script>
 <script src="plugins/daterangepicker/daterangepicker.js"></script>
-
+<script src='plugins/tinymce/tinymce.min.js'></script>
 <script src="../resources/js/fungsi_admin.js"></script>
 <script src="plugins/datatable/jquery.dataTables.min.js">
 
@@ -80,6 +80,9 @@ $(document).ready(function(){
       $('#contoh').DataTable({
         "ordering": false
       });
+      // tinymce.init({
+      //   selector: '.EditorMCE'
+      // });
     });
     $(".box").fadeIn(300);
 });
