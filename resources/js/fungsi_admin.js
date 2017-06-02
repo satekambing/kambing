@@ -18,6 +18,17 @@ function input_tanggal(){
       format: 'DD / MM / YYYY',
     }
   });
+  // tanggal + waktu
+  $(".tanggalwaktu").daterangepicker({
+    singleDatePicker: true,
+    showDropdowns: true,
+    timePicker: true,
+    timePicker24Hour: true,
+    // showDropdowns: true,
+    locale: {
+        format: 'DD / MM / YYYY - h:mm '
+    }
+  });
 
   $('.tanggalpicker').daterangepicker({
       showDropdowns: true,
