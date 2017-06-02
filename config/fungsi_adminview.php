@@ -88,6 +88,15 @@ function UbahTanggalKeBulan($tanggal){
 
   return $tanggal;
 }
+function UbahTanggalJam($tanggal){
+  if ($tanggal == ""){
+    return "";
+  }
+  $tanggal = explode(" ",$tanggal);
+  $tanggal_aja = UbahTanggalKeBulan($tanggal[0]);
+  $tanggal_jam = $tanggal[1];
+  return $tanggal_jam.' - '.$tanggal_aja;
+}
 function PencarianLanjutan(array $data){
   ?>
   <!-- <form class="" action="index.html" method="post">
