@@ -4,13 +4,14 @@
 //   return $result;
 // }
 function DropDown(array $data, $selected = null){
-  $withkey = 0;
-  if ($data[0] == null){
-    $withkey = 1; // kalo menggunakan key / misalnya untuk level di table user
-  }
+  $withkey = (isset($data[0])?0:1);
+  // $withkey = 0;
+  // if ($data[0] == null){
+  //   $withkey = 1; // kalo menggunakan key / misalnya untuk level di table user
+  // }
   foreach ($data as $key => $value) {
     $seleksi = "";
-    if ($selected == $value){
+    if (($selected == $value) OR($selected == $key)){
       $seleksi = "SELECTED";
     }
     if ($withkey == 0){
