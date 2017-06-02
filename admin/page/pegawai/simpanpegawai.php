@@ -30,15 +30,27 @@ if(isset($tambah)){
   $sql   = "INSERT INTO $namatable (nip, nama, jenis_kelamin, tempat_lahir, tanggal_lahir, agama, no_telp, email, foto_profil) ";
   $sql  .= " VALUES(?,?,?,?,?,?,?,?,?)";
   $query = $koneksi->prepare($sql);
-  $query->bind_param('sssssssss', $nip, $nama, $jenis_kelamin, $tempat_lahir, $tanggal_lahir, $agama, $no_telp, $email,$gambar);
+  $query->bind_param('sssssssss', $nip, $nama, $jenis_kelamin, $tempat_lahir, $tanggal_lahir, $agama, $no_telp, $email, $gambar);
+  // $query->bind_params('s',$gambar);
   $page = 1;
 }
 elseif (isset($ubah)){
   // Jika proses edit data
-  $tanggal_pegawai = UbahTanggal($tanggal_pegawai??'');
-  $sql   = "UPDATE $namatable SET tanggal_pegawai=?,=?,=? WHERE $pk=?";
+  $tanggal_lahir = UbahTanggal($tanggal_lahir??'');
+  $gambar = $gambar2;
+  if(isset($_FILES['gambar']) && !$_FILES['gambar']['name'] == ""){
+    // echo die('zzz1');
+    // echo die('ada gambar');
+    if(file_exists('../../../files/foto_pegawai/'.$gambar2)){
+      unlink('../../../files/foto_pegawai/'.$gambar2);
+    }
+    $gambar = uploadfoto($_FILES['gambar'],'foto_pegawai');
+    // echo $gambar;
+  }
+  $sql   = "UPDATE $namatable SET nip=?, nama=?, jenis_kelamin=?, tempat_lahir=?, tanggal_lahir=?, agama=?, no_telp=?, email=?, foto_profil=? WHERE $pk=?";
   $query = $koneksi->prepare($sql);
-  // $query->bind_param('sssi',$tanggal_pegawai, $, $,$);
+  $query->bind_param('sssssssssi', $nip, $nama, $jenis_kelamin, $tempat_lahir, $tanggal_lahir, $agama, $no_telp, $email, $gambar, $ubah);
+
   $page = 2;
 }
 elseif (isset($hapus)){
