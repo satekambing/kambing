@@ -202,15 +202,36 @@ $("#TambahModal").on("hidden.bs.modal", function(){
 $(".btnEditor").click(function (e){
   var jhal = $(this).attr('data-halaman');
   var jkolom = $(this).attr('data-kolom');
-  var jform = $("#form"+jkolom);
-  // alert(jform.attr("method"));
+  // var jform = $("#form"+jkolom);
+  var jidform = ("text"+jkolom);
+  // alert(jidform);
+  // $("#"+jidform).hide(1000);
+  //  $("#formvisi_misi").hide(1000);
+  var datakirim = tinyMCE.get(jidform).getContent();
+  alert('--'+jkolom+ '-dan-' + datakirim);
   $.ajax({
     type :'POST',
     url : 'page/'+jhal+'/simpan'+jhal+'.php',
-    data : jform.serialize(),
+    data : {isi : datakirim, kolom : jkolom},
     success : function(data){
-      alert(data)
+      if(data == 1 || data == 2){
+      //  $(".form").reset();
+        $(".pesan-form").removeClass("alert alert-success alert-danger").addClass("alert alert-success");
+        if(data == 1){
+          $(".pesan-form").html("<h4> " + jkolom + " Berhasil di tambah") ;
+        }else{
+          $(".pesan-form").html("<h4>  " + jkolom + " Berhasil di Ubah") ;
+        }
+
+      //S  $(".form")[0].reset();
+
+      }else{
+        $(".pesan-form").removeClass("alert alert-success alert-danger").addClass("alert alert-danger").fadeIn(100);
+        $(".pesan-form").html("<h4> Gagal </h4><p>" + data + "</p>");
+      //  $(".pesan-form").fadeOut("slow");
+        //$("#TambahDialog").modal('hide');
+      }
     },
   })
-  return false;
+  // return false;
 })
