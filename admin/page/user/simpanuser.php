@@ -41,10 +41,17 @@ if(isset($tambah)){
 }
 elseif (isset($ubah)){
   // Jika proses edit data
-  $sql   = "UPDATE $namatable SET tanggal_user=?,=?,=? WHERE $pk=?";
-  $query = $koneksi->prepare($sql);
-  $query->bind_param('sssi',$tanggal_user);
-  $page = 2;
+  if($pass==""){
+    $sql   = "UPDATE $namatable SET username=?,namalengkap=?,email=?,level=?,status=? WHERE $pk=?";
+    $query = $koneksi->prepare($sql);
+    $query->bind_param('sssiii',$username,$namalengkap,$email,$level,$status,$ubah);
+  }else{
+    $sql   = "UPDATE $namatable SET username=?,namalengkap=?,email=?,pass=?,level=?,status=? WHERE $pk=?";
+    $query = $koneksi->prepare($sql);
+    $pass    = md5($pass);
+    $query->bind_param('ssssiii',$username,$namalengkap,$email,$pass,$level,$status,$ubah);
+  }
+$page = 2;
 }
 elseif (isset($hapus)){
   // Jika proses hapus data
