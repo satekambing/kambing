@@ -16,6 +16,7 @@ require_once("../config/koneksi.php");
   <title>Halaman - Admin</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
+
   <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="../resources/css/font-awesome.min.css">
 
@@ -29,6 +30,7 @@ require_once("../config/koneksi.php");
   <link rel="stylesheet" href="plugins/datatable/jquery.dataTables.min.css">
 
   <link rel="stylesheet" href="../resources/css/styleku.css">
+
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -70,7 +72,7 @@ require_once("../config/koneksi.php");
 </html>
 <script>
 
-$(".box").hide(1);
+$(".content-header").hide(1);
 $(document).ready(function(){
     var x = window.location.search.substr(3);
     $("." + x).addClass("active");
@@ -82,6 +84,7 @@ $(document).ready(function(){
       });
       tinymce.init({
         selector: ".EditorMCE",
+        height : 400,
         plugins: [
           "lists link image charmap print preview",
           "searchreplace visualblocks code fullscreen",
@@ -91,6 +94,6 @@ $(document).ready(function(){
 
       });
     });
-    $(".box").fadeIn(300);
+    $(".content-header").fadeIn(300);
 });
 </script>
