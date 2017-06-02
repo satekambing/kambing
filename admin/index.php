@@ -60,7 +60,7 @@ require_once("../config/koneksi.php");
 <script src="plugins/select2-master/dist/js/select2.min.js"></script>
 <script src="plugins/daterangepicker/moment.min.js"></script>
 <script src="plugins/daterangepicker/daterangepicker.js"></script>
-<script src='plugins/ckeditor/ckeditor.min.js'></script>
+<script src='plugins/tinymce/tinymce.min.js'></script>
 <script src="../resources/js/fungsi_admin.js"></script>
 <script src="plugins/datatable/jquery.dataTables.min.js">
 
@@ -69,7 +69,7 @@ require_once("../config/koneksi.php");
  </body>
 </html>
 <script>
-CKEDITOR.replace('CKEditor1');
+
 $(".box").hide(1);
 $(document).ready(function(){
     var x = window.location.search.substr(3);
@@ -80,9 +80,16 @@ $(document).ready(function(){
       $('#contoh').DataTable({
         "ordering": false
       });
-      // tinymce.init({
-      //   selector: '.EditorMCE'
-      // });
+      tinymce.init({
+        selector: ".EditorMCE",
+        plugins: [
+          "lists link image charmap print preview",
+          "searchreplace visualblocks code fullscreen",
+          "media table contextmenu paste save"
+        ],
+        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image save",
+
+      });
     });
     $(".box").fadeIn(300);
 });
