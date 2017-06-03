@@ -1,5 +1,15 @@
 <?php if(!isset($_SESSION['user']) OR $_SESSION['user'] == ''){echo die("Belum Login"); } ?>
 <section class="sidebar">
+  <br />
+  <div class="user-panel sidebar-menu">
+    <div class="pull-left image">
+      <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+    </div>
+    <div class="pull-left info">
+      <p>Fauzi Jabbar</p>
+      <small>Super Admin</small>
+    </div>
+  </div>
   <ul class="sidebar-menu">
     <?php if($_SESSION['level'] == 4){ ?>
       <li class="header">Menu</li>
