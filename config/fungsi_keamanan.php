@@ -18,8 +18,11 @@ function levelUser(int $angka){
     break;
   }
 }
-function cekLogin(){
+function cekLogin($direct=null){
   if(!isset($_SESSION['user']) OR $_SESSION['user'] == ''){
+    if($direct=="direct"){
+      header('location: login.php');
+    }
     echo die("Belum Login ");
   }
 }
