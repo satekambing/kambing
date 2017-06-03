@@ -18,7 +18,6 @@ if(isset($tambah)){
   // Jika proses tambah data
   $cekUser = cekDuplikasiData($namatable,'nip',$nip);
   if ($cekUser > 0) {echo die("Data NIP <b>".$nip.'</b> Sudah ada');}
-
   $gambar = "";
   if(isset($_FILES['gambar']) && !$_FILES['gambar']['name'] == ""){
     // echo die('zzz1');
@@ -26,6 +25,18 @@ if(isset($tambah)){
     $gambar = uploadfoto($_FILES['gambar'],'foto_pegawai');
     // echo $gambar;
   }
+  // Insert - data user
+  $cekUser = cekDuplikasiData('tbl_user','username',$nip);
+  if ($cekUser > 0) {echo die("Data Username <b>".$nip.'</b> Sudah ada');}
+
+  $sql   = "INSERT INTO tbl_user (username, namalengkap, email, level)";
+  $sql  .= " VALUES(?,?,?,?)";
+  $levelx = 4; // defaultnya pegawai
+  $query2 = $koneksi->prepare($sql);
+  $query2->bind_param('sssi', $nip, $nama, $email, $levelx);
+  $query2->execute();
+
+  // Insert - data pegawai
   $tanggal_lahir = UbahTanggal($tanggal_lahir??'');
   $sql   = "INSERT INTO $namatable (nip, nama, jenis_kelamin, tempat_lahir, tanggal_lahir, agama, no_telp, email, foto_profil) ";
   $sql  .= " VALUES(?,?,?,?,?,?,?,?,?)";
