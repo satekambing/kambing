@@ -1,13 +1,10 @@
 <?php if(!isset($_SESSION['user']) OR $_SESSION['user'] == ''){echo die("Belum Login"); } ?>
-<?php echo $_SESSION['level'] ?>
 <section class="sidebar">
   <ul class="sidebar-menu">
-
     <?php if($_SESSION['level'] == 4){ ?>
       <li class="header">Menu</li>
       <li><a href="#"><i class="fa fa-dashboard text-red"></i> <span>Dashboard</span></a></li>
     <?php } ?>
-
     <?php if(cekMenu(MENU_HALAMANDEPAN)){ ?>
       <li class="header">Halaman Depan</li>
       <li class="berita"><a href="?p=berita"><i class="fa fa-newspaper-o text-faded"></i> <span>Berita</span></a></li>
