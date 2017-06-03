@@ -29,7 +29,7 @@ $ket       = "tambah";
   <div class="isi-datamodal">
     <?php
     if (!$rowid == ""){
-
+      
       // cari data di database dulu
       $sql = "SELECT * FROM $namatable WHERE $pk=$rowid";
       if($pegawai=$koneksi->query($sql)){
@@ -74,17 +74,23 @@ $ket       = "tambah";
         </div>
 
       </div>
-      <div class="form-group">
-        <label for="">Tempat Lahir</label>
-        <input type="text" name="tempat_lahir"  class="form-control" placeholder="Tempat Lahir" value="<?php echo ($data->tempat_lahir ?? '') ?>"  >
-      </div>
-      <div class="form-group">
-        <label for="">Tanggal Lahir </label>
-        <div class="input-group date">
-          <input type="text" name="tanggal_lahir" placeholder="YYYY-DD-MM" value="<?php echo UbahTanggalKeView($data->tanggal_lahir??'') ?>"  class="tanggalx form-control" >
-          <span class="input-group-addon text-blue"><i class="fa fa-calendar"></i></span>
+      <div class="form-group ">
+
+        <div class="row">
+          <div class="col-sm-5">
+            <label for="">Tempat </label>
+            <input type="text" name="tempat_lahir"  class="form-control" placeholder="Tempat Lahir" value="<?php echo ($data->tempat_lahir ?? '') ?>"  >
+          </div>
+          <div class="col-sm-7">
+            <label for="">Tanggal Lahir</label>
+
+          <div class="input-group date">
+            <input type="text" name="tanggal_lahir" placeholder="YYYY-DD-MM" value="<?php echo UbahTanggalKeView($data->tanggal_lahir??'') ?>"  class="tanggalx form-control" >
+            <span class="input-group-addon text-blue"><i class="fa fa-calendar"></i></span>
+          </div>
         </div>
       </div>
+    </div>
 
       <div class="form-group">
         <label for="">Agama</label>
@@ -111,6 +117,13 @@ $ket       = "tambah";
             <img class="img-thumbnail " src="../files/foto_pegawai/<?php echo $data->foto_profil ?>" width="150px" alt="">
         <?php } ?>
       </div>
+      <!-- <div class="form-group has-success">
+        <div class="checkbox">
+          <label for="">
+            <input type="checkbox" name="" value=""> Buat Username dan Password
+          </label>
+        </div>
+      </div> -->
 
     </form>
   </div>
