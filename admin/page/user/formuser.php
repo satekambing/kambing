@@ -64,7 +64,7 @@ $ket       = "tambah";
         <input type="email" name="email"  class="form-control" placeholder="exp: contoh@gmail.com" value="<?php echo ($data->email ?? '') ?>"  >
       </div>
       <div class="form-group">
-        <label for="">Level <?php echo $data->level?></label>
+        <label for="">Level <?php echo $data->level??'' ?></label>
         <select class="form-control" name="level">
           <?php Dropdown(LEVEL_USER, $data->level??'') ?>
         </select>
