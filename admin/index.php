@@ -2,7 +2,7 @@
 session_start();
 
 require_once("../config/fungsi_keamanan.php");
-cekLogin();
+cekLogin('direct');
 
 require_once("../config/fungsi_adminview.php");
 require_once("../config/config.php");
