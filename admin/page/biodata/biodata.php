@@ -1,95 +1,220 @@
 <?php
-echo JudulHalaman(['BIODATA','Menampikan Biodata Pegawai']); // Judul Halaman - Deskripsi
+cekLevel('biodata');
+echo JudulHalaman(['BIODATA','Menampilkan Biodata Pegawai']); // Judul Halaman - Deskripsi
+$sql    = " SELECT * FROM tbl_pegawai WHERE nip='".$_SESSION['user']."'";
+$profil = $koneksi->query($sql);
+$r      = $profil->fetch_object();
+// $profil->close();
+require("../config/fungsi_basic.php");
+
 ?>
 <div class="content-header">
+  <div class="pesan-form">
+
+  </div>
   <div class="row">
     <div class="col-md-3">
       <div class="box box-primary">
         <div class="box-body box-profile">
-              <!-- <img class="profile-user-img img-responsive img-circle" src="<?php echo $rowuser['foto']?>" alt="User profile picture"> -->
+          <img class=" img-responsive" src="<?php echo $rowuser['foto']?>" alt="Foto Profil">
 
-              <h3 class="profile-username text-center"><?php echo $rowuser['namalengkap']?></h3>
+          <!-- <h3 class="profile-username text-center"><?php //echo $rowuser['namalengkap']?></h3>
 
-              <p class="text-muted text-center"><?php echo levelUser($rowuser['level'])[0]; ?></p>
+          <p class="text-muted text-center"><?php //echo levelUser($rowuser['level'])[0]; ?></p> -->
 
-              <ul class="list-group list-group-unbordered">
-                <li class="list-group-item">
-                  <b>Nama Lengkap</b> <a class="pull-right"><?php echo $rowuser['namalengkap']?></a>
-                </li>
-                <li class="list-group-item">
-                  <b>Following</b> <a class="pull-right">543</a>
-                </li>
-                <li class="list-group-item">
-                  <b>Friends</b> <a class="pull-right">13,287</a>
-                </li>
-              </ul>
+          <ul class="list-group list-group-unbordered">
+            <li class="list-group-item">
+              <b>Tanggal Akun Aktif</b> <a class="pull-right">20 Mei 2017</a>
+            </li>
+            <li class="list-group-item">
+              <b>Status Kelengkapan Data</b>
 
-              <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
-            </div>
+            </li>
+          </ul>
+
+
+        </div>
+        <!-- /.box-body -->
       </div>
-    </div> <!-- End of tag col-md-3 -->
-    <div class="col-md-9">
-      <div class="box no-border">
-        <div class="nav-tabs-custom">
-                    <ul class="nav nav-tabs">
-                      <li class="active"><a href="#tab_1" data-toggle="tab">Tab 1</a></li>
-                      <li><a href="#tab_2" data-toggle="tab">Tab 2</a></li>
-                      <li><a href="#tab_3" data-toggle="tab">Tab 3</a></li>
-                      <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                          Dropdown <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-                          <li role="presentation" class="divider"></li>
-                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-                        </ul>
-                      </li>
-                      <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
-                    </ul>
-                    <div class="tab-content">
-                      <div class="tab-pane active" id="tab_1">
-                        <b>How to use:</b>
 
-                        <p>Exactly like the original bootstrap tabs except you should use
-                          the custom wrapper <code>.nav-tabs-custom</code> to achieve this style.</p>
-                        A wonderful serenity has taken possession of my entire soul,
-                        like these sweet mornings of spring which I enjoy with my whole heart.
-                        I am alone, and feel the charm of existence in this spot,
-                        which was created for the bliss of souls like mine. I am so happy,
-                        my dear friend, so absorbed in the exquisite sense of mere tranquil existence,
-                        that I neglect my talents. I should be incapable of drawing a single stroke
-                        at the present moment; and yet I feel that I never was a greater artist than now.
-                      </div>
-                      <!-- /.tab-pane -->
-                      <div class="tab-pane" id="tab_2">
-                        The European languages are members of the same family. Their separate existence is a myth.
-                        For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
-                        in their grammar, their pronunciation and their most common words. Everyone realizes why a
-                        new common language would be desirable: one could refuse to pay expensive translators. To
-                        achieve this, it would be necessary to have uniform grammar, pronunciation and more common
-                        words. If several languages coalesce, the grammar of the resulting language is more simple
-                        and regular than that of the individual languages.
-                      </div>
-                      <!-- /.tab-pane -->
-                      <div class="tab-pane" id="tab_3">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                        It has survived not only five centuries, but also the leap into electronic typesetting,
-                        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-                        sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-                        like Aldus PageMaker including versions of Lorem Ipsum.
-                      </div>
-                      <!-- /.tab-pane -->
-                    </div>
-                    <!-- /.tab-content -->
+      <!-- zz -->
+      <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Aktifitas Terakhir</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <strong><i class="fa fa-book margin-r-5"></i> Education</strong>
+
+              <div class="progress progress-sm active">
+                  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                    <span class="sr-only">20% Complete</span>
+                  </div>
+                </div>
+
+              <hr>
+
+              <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
+
+              <p class="text-muted">Malibu, California</p>
+
+              <hr>
+
+              <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
+
+              <p>
+                <span class="label label-danger">UI Design</span>
+                <span class="label label-success">Coding</span>
+                <span class="label label-info">Javascript</span>
+                <span class="label label-warning">PHP</span>
+                <span class="label label-primary">Node.js</span>
+              </p>
+
+              <hr>
+
+              <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
+
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+            </div>
+            <!-- /.box-body -->
+          </div>
+    </div>
+    <div class="col-md-9">
+      <div class="nav-tabs-custom">
+
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Biodata</a></li>
+            <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Data Keluarga</a></li>
+            <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">Riwayat Pendidikan</a></li>
+            <!-- <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li> -->
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab_1" >
+              <form class="form" action="" method="post">
+
+                <div class="form-group">
+                  <label for="">NIP</label>
+                  <input type="text" name="nip"  class="form-control" placeholder="Nomor Induk Pegawai" autofocus value="<?php echo ($r->nip ?? '') ?>"  >
+                </div>
+                <div class="form-group">
+                  <label for="">Nama Lengkap</label>
+                  <input type="text" name="nama"  class="form-control" placeholder="Nama Lengkap" value="<?php echo ($r->nama ?? '') ?>"  >
+                </div>
+                <div class="form-group">
+                  <label for="">Jenis Kelamin</label>
+                  <div class="radio">
+
+                    <label>
+                      <input type="radio" name="jenis_kelamin" id="jenis_kelaminl" value="L" checked="">
+                      Laki - Laki
+                    </label> &nbsp
+                    <label class="radio-inline">
+                      <input type="radio" name="jenis_kelamin" id="jenis_kelaminp" value="P" >
+                      Perempuan
+                    </label>
                   </div>
 
+                </div>
+                <div class="form-group ">
 
-      </div>
+                  <div class="row">
+                    <div class="col-sm-5">
+                      <label for="">Tempat </label>
+                      <input type="text" name="tempat_lahir"  class="form-control" placeholder="Tempat Lahir" value="<?php echo ($r->tempat_lahir ?? '') ?>"  >
+                    </div>
+                    <div class="col-sm-7">
+                      <label for="">Tanggal Lahir</label>
+
+                    <div class="input-group date">
+                      <input type="text" name="tanggal_lahir" placeholder="YYYY-DD-MM" value="<?php echo UbahTanggalKeView($r->tanggal_lahir??'') ?>"  class="tanggalx form-control" >
+                      <span class="input-group-addon text-blue"><i class="fa fa-calendar"></i></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+                <div class="form-group">
+                  <label for="">Agama</label>
+                  <select class="form-control" name="agama">
+                    <?php KolomAgama($r->agama ?? '') ?>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="">No Telp</label>
+                  <input type="text" name="no_telp"  class="form-control" placeholder="No Telp" value="<?php echo ($r->no_telp ?? '') ?>"  >
+                </div>
+                <div class="form-group">
+                  <label for="">Email</label>
+                  <input type="email" name="email"  class="form-control" placeholder="Contoh test@gmail.com" value="<?php echo ($r->email ?? '') ?>"  >
+                </div>
+                <div class="form-group">
+                  <label for="">Foto</label>
+                  <input type="file" name="gambar" class="form-control">
+                  <?php if(isset($r->foto_profil) && (!$r->foto_profil == "")){ ?>
+                    <input type="hidden" name="gambar2" value="<?php echo $r->foto_profil ?>">
+                    <div class="pull-right">
+                      <p class="text-warning">* Kosongkan File Jika Tidak ingin mengganti</p>
+                    </div>
+                      <img class="img-thumbnail " src="../files/foto_pegawai/<?php echo $r->foto_profil ?>" width="150px" alt="">
+                  <?php } ?>
+                </div>
+
+              </form>
+                <button name="submitbtn" class="btn btn-primary btnEditor" data-halaman="profil" data-kolom="visi_misi" >Simpan</button>
+            </div>
+            <!-- /.tab-pane -->
+            <div class="tab-pane" id="tab_2">
+                <form method="POST" class="form-horizontal">
+
+                  <div class="form-group">
+                    <label for="" class="col-sm-3 control-label">Nama Anggota Keluarga </label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" name="" value="<?php //echo ($)?>">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="" class="col-sm-3 control-label">Tempat - Tanggal Lahir </label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" name="" value="<?php //echo ($)?>">
+                  </div>
+                </div>
+                  <div class="form-group">
+                    <label for="" class="col-sm-3 control-label">Pekerjaan </label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" name="" value="<?php //echo ($)?>">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="" class="col-sm-3 control-label"> Status </label>
+                    <div class="col-sm-9">
+                      <select class="form-control" name="">
+                        <?php DropDown(['Nikah','Belum Nikah']) ?>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="" class="col-sm-3"></label>
+                    <div class="col-sm-9">
+                      <input type="submit" name="buttonsave" value="Simpan">
+                    </div>
+                  </div>
+                </form>
+            </div>
+            <!-- /.tab-pane -->
+            <div class="tab-pane" id="tab_3">
+                <form method="POST" class="form formEditor" id="formfungsi">
+                  <textarea name="fungsi" class="EditorMCE" id="textfungsi" rows="22" cols="80">
+                    <?php echo ($r->fungsi??'')?>
+                  </textarea>
+                  <br />
+                </form>
+                  <button name="submitbtn" class="btn btn-primary btnEditor" data-halaman="profil" data-kolom="fungsi" >Simpan</button>
+            </div>
+            <!-- /.tab-pane -->
+          </div>
+          <!-- /.tab-content -->
+        </div>
     </div>
   </div>
+
 </div>
