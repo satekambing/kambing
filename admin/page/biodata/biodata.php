@@ -1,13 +1,16 @@
 <?php
 cekLevel('biodata');
 echo JudulHalaman(['BIODATA','Menampilkan Biodata Pegawai']); // Judul Halaman - Deskripsi
-
+$sql    = " SELECT * FROM tbl_pegawai WHERE nip='".$_SESSION['user']."'";
+$profil = $koneksi->query($sql);
+$r      = $profil->fetch_object();
 // $profil->close();
 require("../config/fungsi_basic.php");
 
 ?>
 <div class="content-header">
   <div class="pesan-form">
+
   </div>
   <div class="row">
     <div class="col-md-3">
@@ -34,6 +37,7 @@ require("../config/fungsi_basic.php");
         <!-- /.box-body -->
       </div>
 
+      <!-- zz -->
       <div class="box box-info">
             <div class="box-header with-border">
               <h3 class="box-title">Aktifitas Terakhir</h3>
@@ -79,52 +83,18 @@ require("../config/fungsi_basic.php");
       <div class="nav-tabs-custom">
 
           <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab_biodata" data-toggle="tab" aria-expanded="true" data-halaman="biodata" data-form="biodata_detail">Biodata</a></li>
-            <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false" data-halaman="biodata">Data Keluarga</a></li>
+            <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Biodata</a></li>
+            <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Data Keluarga</a></li>
             <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">Riwayat Pendidikan</a></li>
             <!-- <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li> -->
           </ul>
           <div class="tab-content">
-            <div class="tab-pane active tab_awal" id="tab_biodata" >
-
+            <div class="tab-pane active" id="tab_1" >
+              <?php include("page/biodata/biodata_detail.php") ?>
             </div>
             <!-- /.tab-pane -->
             <div class="tab-pane" id="tab_2">
-                <form method="POST" class="form-horizontal">
-
-                  <div class="form-group">
-                    <label for="" class="col-sm-3 control-label">Nama Anggota Keluarga </label>
-                    <div class="col-sm-9">
-                      <input type="text" class="form-control" name="" value="<?php //echo ($)?>">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="" class="col-sm-3 control-label">Tempat - Tanggal Lahir </label>
-                    <div class="col-sm-9">
-                    <input type="text" class="form-control" name="" value="<?php //echo ($)?>">
-                  </div>
-                </div>
-                  <div class="form-group">
-                    <label for="" class="col-sm-3 control-label">Pekerjaan </label>
-                    <div class="col-sm-9">
-                      <input type="text" class="form-control" name="" value="<?php //echo ($)?>">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="" class="col-sm-3 control-label"> Status </label>
-                    <div class="col-sm-9">
-                      <select class="form-control" name="">
-                        <?php DropDown(['Nikah','Belum Nikah']) ?>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="" class="col-sm-3"></label>
-                    <div class="col-sm-9">
-                      <input type="submit" class="btn btn-primary" name="buttonsave" value="Simpan Data Keluarga">
-                    </div>
-                  </div>
-                </form>
+              <?php include("page/biodata/biodata_datakeluarga.php") ?>
             </div>
             <!-- /.tab-pane -->
             <div class="tab-pane" id="tab_3">
