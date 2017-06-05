@@ -1,9 +1,9 @@
 /**
   * Fungsi untuk keperluan modal dialog
 **/
-$("li").click(function(){
+$(".sidebar-menu > li").click(function(){
   var x = $(this).attr("class");
-  $("li").removeClass("active");
+  $(".sidebar-menu > li").removeClass("active");
 
 });
 function input_tanggal(){
@@ -163,12 +163,12 @@ $("#TambahModal").on("show.bs.modal", function (e) {
 });
 
 // fungsi khusus untuk hapus
-function buttonHapus(halaman,rowid){
+function buttonHapus(halaman,rowid,table){
   $(".btn-hapus").click(function(){
     $.ajax({
       type  : 'post',
       url   : 'page/' + halaman +'/simpan' + halaman +'.php',
-      data  : {hapus: rowid,jhal: halaman},
+      data  : {hapus: rowid,jhal: halaman,jtable: table},
       success : function(data){
         // alert(data);
         if(data == 3){
@@ -187,17 +187,19 @@ function buttonHapus(halaman,rowid){
 
   });
 }
-$("#HapusModal").on("show.bs.modal", function (e){
+$("#HapusModal, #HapusModal2").on("show.bs.modal", function (e){
   var halaman = $(e.relatedTarget).data('halaman');
   var rowid = $(e.relatedTarget).data('idnya');
+  var table = $(e.relatedTarget).data('table');
+  var idi = $(this).attr("id");
   $.ajax({
     type:'POST',
     url : 'page/'+halaman+'/hapus'+halaman+'.php',
-    data : { jhal: halaman, jrow: rowid},
+    data : { jhal: halaman, jrow: rowid, jtable: table},
     // data : $(".form").serialize(),
     success: function(data){
-      $(".isi-datamodal").html(data);
-      buttonHapus(halaman,rowid);
+      $("#"+idi+" .isi-datamodal").html(data);
+      buttonHapus(halaman,rowid,table);
     }
   });
 });
@@ -245,4 +247,32 @@ $(".btnEditor").click(function (e){
     },
   })
   // return false;
+})
+$(".simpan-tab").click(function(){
+  var hal = $(this).attr("data-halaman");
+  var form = $(this).attr("data-form");
+  var idform = "#form_"+form;
+  // alert(form);
+  $.ajax({
+    type :'POST',
+    url : 'page/'+hal+'/simpan'+hal+'.php',
+    data : $(idform).serialize(),
+    success : function(data){
+      // alert(hal);
+      // $("#table_"+hal).hide(1000);
+      $("#table_"+form).append(data);
+    }
+  })
+  return false;
+})
+$(document).ready(function(){input_tanggal();})
+$(".nav-tabs > li").click(function(){
+    var id = $(this).find("a").attr("href");
+    var nama = id.replace("#","");
+    // var x = "#"+nama;
+
+    // $("#table_"+nama).hide(1000);
+    // $(".modal").removeAttr("id");
+    // var x = $("#"+nama+" > .modal").attr("id","sate");
+    // alert(x);
 })
