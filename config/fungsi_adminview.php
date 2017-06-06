@@ -113,8 +113,35 @@ function PencarianLanjutan(array $data){
   </form> -->
   <?php
 }
+function getDataUser($user){
+  $koneksi	= new mysqli(SERVER, USER, PASS, DBNAME);
+  $sql      = "SELECT namalengkap,level FROM tbl_user WHERE username='$user'";
+  $userx    = $koneksi->query($sql);
+  $r        = $userx->fetch_object();
+  $userx->close();
 
-
+  $sql      = "SELECT foto_profil FROM tbl_pegawai WHERE nip='$user'";
+  // echo $sql;
+  $peg      = $koneksi->query($sql);
+  $f        = $peg->fetch_object();
+  // echo die($peg->num_rows);
+  if($peg->num_rows > 0 ){
+    // kalau user juga ada di data pegawai + gak ada fotonya, set default fotonya jadi none..
+    $foto   = $f->foto_profil;
+    if ($f->foto_profil == ""){
+      $foto   = "none.jpg";
+    }
+  }else{
+    $foto   = "none.jpg"; // kebetulan gambarnya png
+  }
+  $foto     = "../files/foto_pegawai/".$foto;
+  $peg->close();
+  return array(
+      'namalengkap'=>$r->namalengkap,
+      'level'=>$r->level,
+      'foto'=>$foto
+  );
+}
 
 
 
