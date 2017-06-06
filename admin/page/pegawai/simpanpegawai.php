@@ -1,5 +1,5 @@
 <?php
-if ((!isset($_POST['hapus'])) && (empty($_POST['nip']) OR empty($_POST['nama']) OR empty($_POST['tempat_lahir']) OR empty($_POST['email']) OR empty($_POST['tanggal_lahir']))){
+if ((!isset($_POST['hapus'])) && (empty($_POST['nip']) OR empty($_POST['nama']) OR empty($_POST['email']) )){
   echo die("Data tidak lengkap");
 }
 require_once("../../../config/fungsi_admindata.php");
