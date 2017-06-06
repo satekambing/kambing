@@ -2,12 +2,14 @@
 <section class="sidebar">
   <br />
   <div class="user-panel sidebar-menu">
+    <?php  $rowuser = getDataUser($_SESSION['user']); ?>
     <div class="pull-left image">
-      <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+      <img src="<?php echo $rowuser['foto']?>" height="200px" width="100px" class="img-circle" alt="User Image">
     </div>
     <div class="pull-left info">
-      <p>Fauzi Jabbar</p>
-      <small>Super Admin</small>
+
+      <p><?php echo $rowuser['namalengkap']; ?></p>
+      <small><?php echo levelUser($rowuser['level'])[0]; ?></small>
     </div>
   </div>
   <ul class="sidebar-menu">
@@ -24,7 +26,10 @@
     <?php } ?>
     <?php if(cekMenu(MENU_KEPEGAWAIAN)){ ?>
       <li class="kepegawaian header">Kepegawaian</li>
+      <li class="biodata"><a href="?p=biodata"><i class="fa fa-user text-faded"></i> <span>Biodata</span><span class="pull-right-container"><small class="label pull-right bg-yellow">Belum 1</small></span></a></li>
+      <?php if($_SESSION['level'] == 1){ ?>
       <li class="pegawai"><a href="?p=pegawai"><i class="fa fa-user text-faded"></i> <span>Pegawai</span><span class="pull-right-container"><small class="label pull-right bg-red">Belum Lengkap</small></span></a></li>
+      <?php } ?>
       <li class="kepangkatan"> <a href="?p=kepangkatan"><i class="fa fa-file text-faded"></i> <span>Kenaikan Pangkat</span></a></li>
       <li class="cuti"><a href="?p=cuti"><i class="fa fa-calendar text-faded"></i> <span>Cuti</span></a></li>
       <li class="gaji"><a href="?p=gaji"><i class="fa fa-home text-faded"></i> <span>Kenaikan Gaji</span></a></li>
