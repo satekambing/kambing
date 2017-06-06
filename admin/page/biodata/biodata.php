@@ -4,9 +4,14 @@ echo JudulHalaman(['BIODATA','Menampilkan Biodata Pegawai']); // Judul Halaman -
 $sql    = " SELECT * FROM tbl_pegawai WHERE nip='".$_SESSION['user']."'";
 $profil = $koneksi->query($sql);
 $r      = $profil->fetch_object();
+
 // $profil->close();
 require("../config/fungsi_basic.php");
-
+if ($_SESSION['level'] == 4){
+  require_once("../config/fungsi_admindata.php");
+  // kalau level user itu pegawai maka nip = nip saat login
+  $nip    = CariPegawai($_SESSION['user']); // mencari id_pegawai berdasarkan nip
+}
 ?>
 <div class="content-header">
   <div class="pesan-form">
@@ -83,28 +88,22 @@ require("../config/fungsi_basic.php");
       <div class="nav-tabs-custom">
 
           <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Biodata</a></li>
-            <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Data Keluarga</a></li>
-            <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">Riwayat Pendidikan</a></li>
+            <li class="active"><a href="#detail" data-toggle="tab" aria-expanded="true">Biodata</a></li>
+            <li class=""><a href="#datakeluarga" data-toggle="tab" aria-expanded="false">Data Keluarga</a></li>
+            <li class=""><a href="#datapendidikan" data-toggle="tab" aria-expanded="false">Riwayat Pendidikan</a></li>
             <!-- <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li> -->
           </ul>
           <div class="tab-content">
-            <div class="tab-pane active" id="tab_1" >
+            <div class="tab-pane active" id="detail" >
               <?php include("page/biodata/biodata_detail.php") ?>
             </div>
             <!-- /.tab-pane -->
-            <div class="tab-pane" id="tab_2">
+            <div class="tab-pane" id="datakeluarga">
               <?php include("page/biodata/biodata_datakeluarga.php") ?>
             </div>
             <!-- /.tab-pane -->
-            <div class="tab-pane" id="tab_3">
-                <form method="POST" class="form formEditor" id="formfungsi">
-                  <textarea name="fungsi" class="EditorMCE" id="textfungsi" rows="22" cols="80">
-                    <?php echo ($r->fungsi??'')?>
-                  </textarea>
-                  <br />
-                </form>
-                  <button name="submitbtn" class="btn btn-primary btnEditor" data-halaman="profil" data-kolom="fungsi" >Simpan</button>
+            <div class="tab-pane" id="datapendidikan">
+              <?php include("page/biodata/biodata_datapendidikan.php") ?>
             </div>
             <!-- /.tab-pane -->
           </div>
