@@ -31,7 +31,15 @@ require_once("../config/fungsi_adminview.php");
   <link rel="stylesheet" href="plugins/datatable/jquery.dataTables.min.css">
 
   <link rel="stylesheet" href="../resources/css/styleku.css">
-
+  <style media="screen">
+    .status-box{
+       list-style-type: none;
+       padding: 0 0 0 10px;
+    }
+    .status-box > li {
+      margin: 3% 0;
+    }
+  </style>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
