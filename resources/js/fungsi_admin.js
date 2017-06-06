@@ -252,15 +252,17 @@ $(".simpan-tab").click(function(){
   var hal = $(this).attr("data-halaman");
   var form = $(this).attr("data-form");
   var idform = "#form_"+form;
-  // alert(form);
+  
   $.ajax({
     type :'POST',
     url : 'page/'+hal+'/simpan'+hal+'.php',
     data : $(idform).serialize(),
     success : function(data){
-      // alert(hal);
-      // $("#table_"+hal).hide(1000);
-      $("#table_"+form).append(data);
+      if(data == 1){
+        alert('zzz');
+      }else{
+        $("#table_"+form).append(data);
+      }
     }
   })
   return false;
