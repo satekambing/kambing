@@ -91,7 +91,6 @@ elseif(isset($hapus)){
 elseif(isset($_POST['ubah'])){
   $namatable = "tbl_pegawai";
   $pk        = "id_pegawai";
-  echo $_SESSION['user'];
   if ($_SESSION['level'] == 4){
     // kalau level user itu pegawai maka nip = nip saat login
     $nip    = CariPegawai($_SESSION['user']); // mencari id_pegawai berdasarkan nip
@@ -138,7 +137,6 @@ elseif(isset($_POST['ubah'])){
     $query = $koneksi->prepare($sql);
     $query->bind_param('ssssssssi', $nama, $jenis_kelamin, $tempat_lahir, $tanggal_lahir, $agama, $no_telp, $email, $gambar, $nip);
 
-    echo $nama.'-'. $jenis_kelamin.'-'. $tempat_lahir.'-'. $tanggal_lahir.'-'. $agama.'-'. $no_telp.'-'. $email.'-'. $gambar.'-'. $nip;
     $page = 2;
   }
 }

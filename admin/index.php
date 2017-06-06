@@ -65,6 +65,7 @@ require_once("../config/fungsi_adminview.php");
 <script src="plugins/daterangepicker/daterangepicker.js"></script>
 <script src='plugins/tinymce/tinymce.min.js'></script>
 <script src="../resources/js/fungsi_admin.js"></script>
+<script src="../resources/js/fungsi_ajax.js"></script>
 <script src="plugins/datatable/jquery.dataTables.min.js">
 
 </script>

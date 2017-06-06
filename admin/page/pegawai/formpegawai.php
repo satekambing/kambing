@@ -29,7 +29,7 @@ $ket       = "tambah";
   <div class="isi-datamodal">
     <?php
     if (!$rowid == ""){
-      
+
       // cari data di database dulu
       $sql = "SELECT * FROM $namatable WHERE $pk=$rowid";
       if($pegawai=$koneksi->query($sql)){

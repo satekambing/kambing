@@ -125,7 +125,7 @@ $(".btnEditor").click(function (e){
     url : 'page/'+jhal+'/simpan'+jhal+'.php',
     data : {isi : datakirim, kolom : jkolom},
     success : function(data){
-      if(data == 1 || data == 2){
+      if(data.isInteger){
         PesanForm("Sukses", "Data ");
       }else{
         PesanForm("Gagal", data);
@@ -138,7 +138,7 @@ $(".simpan-tab").click(function(){
   var hal = $(this).attr("data-halaman");
   var form = $(this).attr("data-form");
   var idform = "#form_"+form;
-  var r = cekForm("_"+form);
+  var r  = cekForm("_"+form);
 
   $.ajax({
     type      : 'post',
@@ -151,10 +151,14 @@ $(".simpan-tab").click(function(){
     data      : r['dataform'],
 
     success : function(data){
-      if(data == 1){
-        alert('zzz');
+      if($.isNumeric(data)){
+        PesanForm("Sukses","Data " + hal + " Berhasil di Simpan");
       }else{
-        $("#table_"+form).append(data);
+        if(data == "Data tidak lengkap"){
+          PesanForm("Gagal","Data "+ hal +" Gagal Simpan");
+        }else{
+          $("#table_"+form).append(data);
+        }
       }
     }
   })

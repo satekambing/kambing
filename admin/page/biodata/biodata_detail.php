@@ -1,4 +1,4 @@
-<form class="form-horizontal" method="post" id="form_datadetailbiodata">
+<form class="form-horizontal" method="post" id="form_datadetailbiodata" enctype="multipart/form-data">
   <input type="hidden" name="ubah" value="<?php echo $_SESSION['user'] ?>">
   <div class="form-group">
     <label for="" class="col-sm-3 control-label">NIP</label>
@@ -76,14 +76,12 @@
   <div class="form-group">
     <div class="col-sm-3"></div>
     <div class="col-sm-9">
-      <button  class="btn btn-primary simpan-tab" data-halaman="biodata" data-form="datadetailbiodata" >
+      <button  class="btn btn-primary simpan-tab" data-halaman="biodata" data-form="datadetailbiodata" data-status="Ubah">
         Simpan Biodata
       </button>
     </div>
   </div>
 </form>
-<table id="table_datadetailbiodata">
-  <tr>
-    <td>x</td>
-  </tr>
-</table>
+<div class="satex">
+
+</div>
