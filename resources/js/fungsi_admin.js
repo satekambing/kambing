@@ -9,9 +9,6 @@ $(".sidebar-menu > li").click(function(){
 function input_tanggal(){
   /* Tanggal */
   $(".tanggalx").daterangepicker({
-    //defaultViewDate : '1993-01-01',
-    //format: 'yyyy-mm-dd',
-    //todayHighlight : true
     singleDatePicker: true,
     showDropdowns: true,
     locale: {
@@ -29,7 +26,7 @@ function input_tanggal(){
         format: 'DD / MM / YYYY - h:mm '
     }
   });
-
+  // tanggal - range
   $('.tanggalpicker').daterangepicker({
       showDropdowns: true,
       showWeekNumbers: true,
@@ -40,9 +37,8 @@ function input_tanggal(){
         format: 'DD / MM / YYYY',
       },
     });
-
-    // $("form").reset();
 }
+// fungsi - pencarian nip
 function pencarianauto(){
   var judul = $(".selectpicker2").attr('data-title');
   $(".selectpicker2").select2({
@@ -64,60 +60,44 @@ function pencarianauto(){
       //minimumInputLength: 2
   });
 }
-// Memunculkan Edit Data
-// $("#UbahDialog").on("show.bs.modal", function (e) {
-//   var rowid = $(e.relatedTarget).data('idnya');
-//   var halaman = $(e.relatedTarget).data('halaman');
-//   var primarykey = $(e.relatedTarget).data('primarykey');
-//   alert("ubahdata"+halaman+ " - " +rowid + " -" +primarykey);
-//   $.ajax({
-//     type  : 'POST',
-//     url   : 'page/'+ halaman +'/form' + halaman + '.php',
-//     data  :  {pk: primarykey, id: rowid, ket: 'edit'},
-//     success : function(data){
-//       $(".isi-datamodal").html(data);
-//       input_tanggal();
-//       pencarianauto();
-//     }
-//   });
-// });
+function cekForm(halaman){
+  var idform = "#form"+halaman;
+  var uploadtipe = $(idform).attr("enctype");
+  console.log(uploadtipe);
+  var data = new Array();
+      data['proses']  = true;
+      data['conten']  = 'application/x-www-form-urlencoded; charset=UTF-8';
+      data['cache']   = true;
+      data['enctype'] = '';
+      data['dataform']= $(idform).serialize();
 
-// Memunculkan Tambah data
+  if(uploadtipe == "multipart/form-data"){
+      data['proses']  = false;
+      data['conten']  = false;
+      data['cache']   = false;
+      data['enctype'] = 'multipart/form-data';
+      var formnya = document.getElementById('form'+halaman);
+      data['dataform'] = new FormData(formnya);
+  }
+  return (data);
+}
+
+// Button simpan di modal dialog
 function buttonModal(halaman){
   $(".btn-simpan").click(function(){
     var form = "#form"+halaman;
     var uploadfiles = $(form).attr("enctype");
-
-    if (uploadfiles == "multipart/form-data"){
-      enctypex = 'multipart/form-data';
-      var form = $('.form')[0];
-      var datax = new FormData(form);
-      prosesx = false;
-      contenx = false;
-      cachex = false;
-    }else{
-      enctypex = '';
-      var datax = $(form).serialize();
-      // var form = $('.form')[0];
-      // var datax = new FormData(form);
-      prosesx = true;
-      contenx = 'application/x-www-form-urlencoded; charset=UTF-8';
-      cachex = true;
-    }
-    // alert(prosesx+contenx+idform);
-    // alert($(this).attr("name"));
-    // alert(prosex);
-
+    var r = cekForm(halaman);
     $.ajax({
-      type  : 'post',
-      enctype: enctypex,
-      url   : 'page/' + halaman +'/simpan' + halaman +'.php',
-      processData: prosesx,
-      contentType: contenx,
-      cache: cachex,
-      timeout: 600000,
-      data  : datax,
-      success : function(data){
+      type      : 'post',
+      enctype   : r['enctype'],
+      url       : 'page/' + halaman +'/simpan' + halaman +'.php',
+      processData: r['proses'],
+      contentType: r['conten'],
+      cache     : r['cache'],
+      timeout   : 600000,
+      data      : r['dataform'],
+      success   : function(data){
         if(data == 1 || data == 2){
         //  $(".form").reset();
           $(".pesan-form").removeClass("alert alert-success alert-danger").addClass("alert alert-success");
@@ -252,7 +232,7 @@ $(".simpan-tab").click(function(){
   var hal = $(this).attr("data-halaman");
   var form = $(this).attr("data-form");
   var idform = "#form_"+form;
-  
+
   $.ajax({
     type :'POST',
     url : 'page/'+hal+'/simpan'+hal+'.php',
