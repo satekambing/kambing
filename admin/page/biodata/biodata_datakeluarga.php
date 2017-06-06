@@ -74,7 +74,7 @@ if ($qkeluarga->num_rows > 0){ // kalau data keluarga ditemukan
         </td>
       </tr>
     <?php } ?>
-    <?php AwalModalDialog('HapusModal') ?>
   </tbody>
   </table>
+  <?php AwalModalDialog('HapusModal') ?>
 <?php } ?>
