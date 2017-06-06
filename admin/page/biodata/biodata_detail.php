@@ -1,4 +1,5 @@
-<form class="form-horizontal" method="post">
+<form class="form-horizontal" method="post" id="form_datadetailbiodata">
+  <input type="hidden" name="ubah" value="<?php echo $_SESSION['user'] ?>">
   <div class="form-group">
     <label for="" class="col-sm-3 control-label">NIP</label>
     <div class="col-sm-9">
@@ -66,16 +67,23 @@
     <?php if(isset($r->foto_profil) && (!$r->foto_profil == "")){ ?>
       <input type="hidden" name="gambar2" value="<?php echo $r->foto_profil ?>">
       <div class="pull-right">
-        <p class="text-warning">* Kosongkan File Jika Tidak ingin mengganti</p>
+        <p class="text-danger">NB : Foto sebelumnya ada - Kosongkan File Jika Tidak ingin mengganti</p>
       </div>
-        <img class="img-thumbnail " src="../files/foto_pegawai/<?php echo $r->foto_profil ?>" width="150px" alt="">
+
     <?php } ?>
     </div>
   </div>
   <div class="form-group">
     <div class="col-sm-3"></div>
     <div class="col-sm-9">
-      <button name="submitbtn" class="btn btn-primary btnEditor" data-halaman="profil" data-kolom="visi_misi" >Simpan Biodata</button>
+      <button  class="btn btn-primary simpan-tab" data-halaman="biodata" data-form="datadetailbiodata" >
+        Simpan Biodata
+      </button>
     </div>
   </div>
 </form>
+<table id="table_datadetailbiodata">
+  <tr>
+    <td>x</td>
+  </tr>
+</table>
