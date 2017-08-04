@@ -15,7 +15,6 @@ if ($_SESSION['level'] == 4){
 ?>
 <div class="content-header">
   <div class="pesan-form">
-
   </div>
   <div class="row">
     <div class="col-md-3">
@@ -27,7 +26,7 @@ if ($_SESSION['level'] == 4){
               <b>Tanggal Akun Aktif</b> <a class="pull-right">20 Mei 2017</a>
             </li>
             <li class="list-group-item">
-              <b>Status Kelengkapan Data</b>
+              <b>Status Kelengkapan Data <?php echo $_SESSION['user'] ?></b>
             </li>
           </ul>
         </div>

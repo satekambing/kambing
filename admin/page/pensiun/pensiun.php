@@ -5,7 +5,8 @@ $JudulKolom = array('NIP','Nama','Tanggal Pensiun','Keterangan','Pilihan'); // s
 
 // query kan table
 
-$sql   = "  SELECT c.*, p.id_pegawai, p.nip, p.nama FROM tbl_pensiun c LEFT JOIN tbl_pegawai p ON c.id_pegawai = p.id_pegawai";
+$sql   = "  SELECT c.*, p.id_pegawai, p.nip, p.nama,r.status_riwayat FROM tbl_pensiun c LEFT JOIN tbl_pegawai p ON c.id_pegawai = p.id_pegawai";
+$sql   .= " LEFT JOIN tbl_riwayat r ON p.id_pegawai = r.id_pegawai GROUP BY c.id_pensiun";
 // $sql   = " SELECT * FROM tbl_pensiun";
 $pensiun = $koneksi->query($sql);
 
@@ -37,6 +38,7 @@ $pensiun = $koneksi->query($sql);
               <td><?php echo $r->nama ?></td>
               <td><?php echo UbahTanggalKeBulan($r->tanggal_pensiun) ?></td>
               <td><?php echo $r->keterangan ?></td>
+              <td><?php echo $r->status ?></td>
               <td><a href="#TambahModal" class="TombolEdit" data-toggle="modal" data-primarykey="id_pensiun" data-halaman="pensiun" data-idnya="<?php  echo $r->id_pensiun ?>" >
                    <button class="btn btn-sm btn-success" ><i class="fa fa-edit"></i></button></a>
                   <a href="#HapusModal" class="TombolHapus" data-toggle="modal" data-halaman="pensiun" data-idnya="<?php  echo $r->id_pensiun ?>">

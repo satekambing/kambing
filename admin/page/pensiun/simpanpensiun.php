@@ -14,17 +14,13 @@ extract($_POST);
 $namatable = 'tbl_pensiun';
 $pk        =  'id_pensiun';
 
+$nip    = CariPegawai($nip??''); // mencari id_pegawai berdasarkan nip
+if($_SESSION['level'] == 4){
+  // kalau yg input pegawai = otomatis status menjadi proses
+  $status = 1;
+  $ket = "";
+}
 if(isset($tambah)){
-  // Jika proses tambah data
-  // $cekEmail = cekEmail($email);
-  // if ($cekEmail == "salah") {echo die("Format Email Salah");}
-
-  // $cekUser = cekDuplikasiData($namatable,'username',$username);
-  // if ($cekUser > 0) {echo die("Data Username <b>".$username.'</b> Sudah ada');}
-  $nip    = CariPegawai($nip); // mencari id_pegawai berdasarkan nip
-  // $tanggal= UbahDateRange($tanggal_mulaiakhir);
-  // $tanggal_pensiun = UbahTanggal($tanggal_pensiun??''); // konversi date range ke date biasa
-  //
   $tanggal_pensiun = UbahTanggal($tanggal_pensiun??'');
 
   $sql   = "INSERT INTO $namatable (id_pegawai,tanggal_pensiun,keterangan) ";
@@ -34,8 +30,6 @@ if(isset($tambah)){
   $page = 1;
 }
 elseif (isset($ubah)){
-  $nip    = CariPegawai($nip); // mencari id_pegawai berdasarkan nip
-
   // Jika proses edit data
   $tanggal_pensiun = UbahTanggal($tanggal_pensiun??'');
   $sql   = "UPDATE $namatable SET id_pegawai=?,tanggal_pensiun=?,keterangan=? WHERE $pk=?";
@@ -50,11 +44,18 @@ elseif (isset($hapus)){
   $query->bind_param('i', $hapus);
   $page = 3;
 }
-// i = integer, s = string... bind_param('tipe data kolom..', 'isi kolom 1','isi kolom 2')
-// s 8 kali karna semua kolom berjumlah 8 dan semuanya bertipe string
-if($query->execute() == TRUE){ // Jika Koneksi Berhasil
+if($query->execute() == TRUE){ // Jika Query Berhasil
   // Jika proses query berhasil
-  echo $page; //
+  // tambah ke riwayat
+  if($page == 1){
+    $last_id = $query->insert_id;
+  }elseif($page == 2){
+    $last_id = $ubah;
+  }elseif($page == 3){
+    $last_id = $hapus;
+  }
+  riwayat($nip, $last_id, $namatable, $status, $ket);
+  echo $page;
 }else {
   // Jika proses query gagal
   echo $query->error;

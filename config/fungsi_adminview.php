@@ -97,6 +97,15 @@ function UbahTanggalJam($tanggal){
   $tanggal_jam = $tanggal[1];
   return $tanggal_jam.' - '.$tanggal_aja;
 }
+function UbahTanggalJamKeTanggal($tanggal){
+  if ($tanggal == ""){
+    return "";
+  }
+  $tanggal = explode(" ",$tanggal);
+  $tanggal_aja = UbahTanggalKeBulan($tanggal[0]);
+  $tanggal_jam = $tanggal[1];
+  return $tanggal_aja;
+}
 function PencarianLanjutan(array $data){
   ?>
   <!-- <form class="" action="index.html" method="post">
@@ -142,8 +151,15 @@ function getDataUser($user){
       'foto'=>$foto
   );
 }
-
-
+function getNamaTableView($table){
+  $d = explode("_",$table);
+  return ucfirst($d[1]);
+}
+function StatusLabel(int $status){
+  // 'PROSES','DITERIMA','DITOLAK','DITUNDA'
+  $warna  = array(1=>'primary','success','danger','warning');
+  return array('label'=> STATUS_ACC[$status],'warna'=>$warna[$status]);
+}
 
 
 

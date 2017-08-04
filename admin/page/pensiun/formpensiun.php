@@ -4,6 +4,7 @@ require_once("../../../config/config.php");
 require_once("../../../config/koneksi.php");
 require_once("../../../config/fungsi_adminview.php");
 require_once("../../../config/fungsi_keamanan.php");
+require_once("../../../config/fungsi_basic.php");
 
 cekLevel('pensiun'); // cek status user.. sudah login / belum.. di izinkan mengakses / tidak
 
@@ -27,6 +28,7 @@ $ket       = "tambah";
 <div class='modal-body'>
   <div class="isi-datamodal">
     <?php
+
     if (!$rowid == ""){
 
       // cari data di database dulu
@@ -38,6 +40,14 @@ $ket       = "tambah";
         if($pensiun->num_rows > 0){
           $data     = $pensiun->fetch_object();
           $ket      = "ubah";
+
+          // cek juga riwayatnya
+          $sql2     = "SELECT status,keterangan FROM tbl_riwayat WHERE halaman='$namatable' ";
+          $sql2     .= " AND id_halaman=$rowid";
+          $sql2     .= " ORDER BY id_riwayat DESC";
+          $qriwayat  = $koneksi->query($sql2);
+          $riwayat   = $qriwayat->fetch_object();
+
         }else{
           echo die(PesanPeringatanModal(['jenis' => 'danger', 'judul' => '404', 'isipesan' => 'Data Tidak Ditemukan']));
         }
@@ -53,6 +63,7 @@ $ket       = "tambah";
     <form class="form" role="form" method="post" name="pensiun" id="formpensiun">
       <input type="hidden" name="<?php echo $ket ?>" value="<?php echo $data->id_pensiun ?>" >
 
+      <?php if ($_SESSION['level'] != 4): ?>
       <div class="form-group">
         <label for="">NIP</label>
         <select class="form-control selectpicker2" name="nip" data-show-subtext="true" data-live-search="true" style="width: 100%" data-title="Nomor Induk Pegawai">
@@ -61,7 +72,7 @@ $ket       = "tambah";
           <?php } ?>
         </select>
       </div>
-
+    <?php endif; ?>
       <div class="form-group">
         <label for="">Tanggal pensiun </label>
         <div class="input-group date">
@@ -75,6 +86,23 @@ $ket       = "tambah";
         <label for="">Keterangan</label>
         <textarea name="keterangan" class="form-control" rows="8" cols="80"><?php echo ($data->keterangan ?? '')  ?></textarea>
       </div>
+
+        <?php if ($_SESSION['level'] == 1): ?>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-5">
+              <label for="">Status</label>
+              <select class="form-control" name="status">
+                <?php Dropdown(STATUS_ACC,$riwayat->status??'') ?>
+              </select>
+            </div>
+            <div class="col-sm-7">
+              <label for="">Keterangan</label>
+              <input type="text" class="form-control" name="ket" value="<?php echo $riwayat->keterangan??'' ?>" placeholder="Keterangan Status">
+            </div>
+          </div>
+        </div>
+      <?php endif; ?>
 
     </form>
   </div>

@@ -2,6 +2,9 @@
 // perlu koneksi broh
 
 function CariPegawai($nip){
+  if($nip==''){
+    $nip = $_SESSION['user'];
+  }
   $koneksi	= new mysqli(SERVER, USER, PASS, DBNAME);
   $sql = "SELECT id_pegawai,nip FROM tbl_pegawai WHERE nip='$nip' ";
   $cari = $koneksi->query($sql);
@@ -9,14 +12,14 @@ function CariPegawai($nip){
   if($cari->num_rows >= 1){
       $data = $cari->fetch_object();
       $koneksi->close();
-      return $data->id_pegawai;
+      $nip = $data->id_pegawai;
+      return $nip;
   }else {
     return 0; // data id_pegawai tidak ditemukan
   }
 }
 function UbahTanggal($tanggal){
   // untuk simpan ke database
-
   $tanggal = explode("/",$tanggal);
   $tanggal = str_replace(" ","",$tanggal);
   $tanggal = $tanggal[2].'-'.$tanggal[1].'-'.$tanggal[0];
@@ -105,5 +108,13 @@ function cekEmail($email){
   if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     return "salah";
   }
+}
+function riwayat($nip,$id_halaman,$halaman,$status,$ket){
+  $koneksi	= new mysqli(SERVER, USER, PASS, DBNAME);
+  $sql      = "INSERT INTO tbl_riwayat (id_pegawai, id_halaman, halaman, status, keterangan)";
+  $sql     .= " VALUES (?,?,?,?,?)";
+  $r        = $koneksi->prepare($sql);
+  $r->bind_param('iisss',$nip,$id_halaman,$halaman,$status,$ket);
+  $r->execute();
 }
 ?>
